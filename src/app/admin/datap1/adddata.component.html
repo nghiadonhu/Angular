@@ -1,0 +1,14 @@
+<!-- your-component.component.html -->
+
+<div>
+    <h2>Add New Item</h2>
+  
+    <!-- Simple form to input Tenloai -->
+    <form #addItemForm="ngForm" (ngSubmit)="addNewItem(addItemForm.value.Tenloai)">
+      <label for="Tenloai">Item Name:</label>
+      <input type="text" id="Tenloai" name="Tenloai" ngModel required>
+  
+      <button type="submit">Add Item</button>
+    </form>
+  </div>
+  

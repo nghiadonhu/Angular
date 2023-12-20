@@ -1,0 +1,166 @@
+
+<!-- <h3>Thông tin loại xe</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">STT</th>
+            <th scope="col">Mã loại</th>
+            <th scope="col">Tên loại</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of subjects;let i = index">
+            <td>{{ i }}</td>
+            <td>{{ item.id }}</td>
+            <td>{{ item.Maloai_id }}</td>
+            <td>{{ item.Tenloai }}</td>
+            <td>
+            
+              <button (click)="removeItem(item.id)">Xóa</button>
+            </td>
+            <td>
+              <button (click)="editItem(item.id, item.Tenloai)">Sửa</button>
+            </td>
+        </tr>
+
+    </tbody>
+</table> -->
+
+
+
+
+ <!-- <div class="w3-row w3-grayscale" *ngFor="let item of subjects;let i = index">
+    <div class="w3-col l3 s6" >
+      <div class="w3-container">
+        <img [src]="'/assets/karlmaster/img/' + item.Anh" style="width:100%">
+
+        <p>{{ item.Tensanpham }}<br><b>$24.99</b></p>
+      </div>
+      
+    </div>
+
+    
+  </div> -->
+
+  <!-- <div>
+    <h2>Add New Item</h2>
+  
+    
+    <form #addItemForm="ngForm" (ngSubmit)="addNewItem(addItemForm.value.Tenloai)">
+      <label for="Tenloai">Item Name:</label>
+      <input type="text" id="Tenloai" name="Tenloai" ngModel required>
+  
+      <button type="submit">Add Item</button>
+    </form>
+  </div> -->
+
+  <!-- your-component.component.html -->
+
+<div>
+  
+  
+  
+  <!-- <h2>Edit Item</h2>
+  <form #editItemForm="ngForm" (ngSubmit)="editItem(editItemForm.value.id, editItemForm.value.Tenloai)">
+    <label for="id">Item ID:</label>
+    <input type="number" id="id" name="id" ngModel required>
+
+    <label for="Tenloai">New Item Name:</label>
+    <input type="text" id="Tenloai" name="Tenloai" ngModel required>
+
+    <button type="submit">Edit Item</button>
+  </form>
+</div> -->
+
+<!-- <div class="card shadow mb-4">
+  <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+  </div>
+  <div class="card-body">
+      <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                  <tr>
+                    <th>STT</th>
+                    <th>Mã loại</th>
+                    <th>Tên loại</th>
+                    <th></th>
+                    <th></th>
+                    
+                  </tr>
+              </thead>
+            
+              <tbody>
+                  <tr *ngFor="let item of subjects;let i = index">
+                    <td>{{ i }}</td>
+                    <td>{{ item.id }}</td>
+                    
+                    <td>{{ item.Tenloai }}</td>
+                    <td>
+                    
+                      <button (click)="removeItem(item.id)">Xóa</button>
+                    </td>
+                    <td>
+                      <button (click)="editItem(item.id, item.Tenloai)">Sửa</button>
+                    </td>
+                  </tr>
+                  
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div> -->
+ <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Quản lý loại sản phẩm</h6>
+                        </div>
+                        
+                        <div class="card-body">
+                          <a class="btn btn-dark fa fa-plus" [routerLink]="['/adddata']">Thêm</a>
+
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                          <th>STT</th>
+                                          <th>Mã loại</th>
+                                          <th>Tên loại</th>
+                                          <th></th>
+                                          <!-- <th></th>
+                                          <th></th> -->
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody>
+                                        <tr *ngFor="let item of subjects;let i = index">
+                                            
+                                            <td>{{ i }}</td>
+                                            <td>{{ item.id }}</td>
+                                            
+                                            <td>{{ item.Tenloai }}</td>
+                                            <!-- <td>
+                                            
+                                              <button class="btn btn-danger fa fa-trash"  (click)="removeItem(item.id)">Xóa</button>
+                                            </td>
+                                            <td>
+                                              <button class="btn btn-warning fa fa-pencil" (click)="editItem(item.id, item.Tenloai)">Sửa</button>
+                                            </td>
+                                            <td>
+                                              <button class ="btn btn-info fa fa-eye" (click)="editItem(item.id, item.Tenloai)">Xem</button>
+                                            </td> -->
+                                            <td>
+                                              <a (click)="editItem(item.id, item.Tenloai)" class="btn btn-warning fa fa-pencil">Sửa</a>
+                                              <a (click)="editItem(item.id, item.Tenloai)" class ="btn btn-info fa fa-eye"></a>
+                                              <a (click)="removeItem(item.id)" class="btn btn-danger fa fa-trash">Xóa</a>
+                                              
+                                          </td>
+                                    
+                                    
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>

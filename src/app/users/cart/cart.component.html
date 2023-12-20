@@ -1,0 +1,105 @@
+<div class="cart_area section_padding_100 clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="cart-table clearfix">
+                    <table class="table table-responsive" >
+                        <thead>
+                            <tr >
+                                <th>Sản phẩm</th>
+                                <th>Giá cả</th>
+                                <th>Số lượng</th>
+                                <th>Tất cả</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let cartItem of cartItems">
+                            <tr>
+                                <td class="cart_product_img d-flex align-items-center">
+                                    <a href="#"><img src="../assets/img/{{cartItem.Anh}}" alt="Product"></a>
+                                    <h6>{{ cartItem.Tensanpham }}</h6>
+                                </td>
+                                <td class="price"><span>{{ cartItem.Gia }} VNĐ</span></td>
+                                <td class="qty">
+                                    <div class="quantity">
+                                        <span class="qty-minus" (click)="decreaseQuantity(cartItem)"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                                        <input type="number" class="qty-text" [(ngModel)]="cartItem.quantity" step="1" min="1" max="99" name="quantity">
+                                        <span class="qty-plus" (click)="increaseQuantity(cartItem)"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                                    </div>
+                                </td>
+                                <td class="total_price"><span>{{ cartItem.totalPrice }} VNĐ</span></td>
+                                <td class="remove">
+                                    <a  (click)="removeFromCart(i)"><i class="fa fa-times" aria-hidden="true"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="cart-footer d-flex mt-30">
+                    <div class="back-to-shop w-50">
+                        <a href="shop-grid-left-sidebar.html">Tiếp tục mua</a>
+                    </div>
+                    <div class="update-checkout w-50 text-right">
+                        <a href="#">Xóa giỏ hàng</a>
+                        
+                        <a href="#">Cập nhập giỏ hàng</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="coupon-code-area mt-70">
+                    <div class="cart-page-heading">
+                        <h5>MÃ PHIẾU GIẢM GIÁ</h5>
+                        <p>Nhập mã giảm giá của bạn</p>
+                    </div>
+                    <form action="#">
+                        <input type="search" name="search" placeholder="#569ab15">
+                        <button type="submit">Áp dụng</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="shipping-method-area mt-70">
+                    <div class="cart-page-heading">
+                        <h5>PHƯƠNG THỨC VẬN CHUYỂN</h5>
+                        <p>Chọn một trong những thứ bạn muốn</p>
+                    </div>
+
+                    <div class="custom-control custom-radio mb-30">
+                        <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+                        <label class="custom-control-label d-flex align-items-center justify-content-between" for="customRadio1"><span>Giao hàng vào ngày hôm sau</span><span>200000 VNĐ</span></label>
+                    </div>
+
+                    <div class="custom-control custom-radio mb-30">
+                        <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+                        <label class="custom-control-label d-flex align-items-center justify-content-between" for="customRadio2"><span>Giao hàng tiêu chuẩn</span><span>100000VNĐ</span></label>
+                    </div>
+
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input">
+                        <label class="custom-control-label d-flex align-items-center justify-content-between" for="customRadio3"><span>Đơn hàng cá nhân</span><span>Free</span></label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="cart-total-area mt-70">
+                    <div class="cart-page-heading">
+                        <h5>TỔNG SỐ GIỎ HÀNG</h5>
+                        <p>Tông tin cuối cùng</p>
+                    </div>
+
+                    <ul class="cart-total-chart">
+                        <li><span>Tổng phụ</span> <span>18.841.091 VNĐ</span></li>
+                        <li><span>Vận chuyển</span> <span>Free</span></li>
+                        <li><span><strong>Tổng tiền</strong></span> <span><strong>18.841.091 VNĐ</strong></span></li>
+                    </ul>
+                    <a href="checkout.html" class="btn karl-checkout-btn">Tiến hành thanh toán</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

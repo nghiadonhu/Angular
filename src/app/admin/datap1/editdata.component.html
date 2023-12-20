@@ -1,0 +1,13 @@
+<h2>Edit Item</h2>
+
+<!-- Simple form to edit Tenloai -->
+<form #editItemForm="ngForm" (ngSubmit)="editItem(editItemForm.value.id, editItemForm.value.Tenloai)">
+  <label for="id">Item ID:</label>
+  <input type="number" id="id" name="id" ngModel required>
+
+  <label for="Tenloai">New Item Name:</label>
+  <input type="text" id="Tenloai" name="Tenloai" ngModel required>
+
+  <button type="submit">Edit Item</button>
+</form>
+</div>
