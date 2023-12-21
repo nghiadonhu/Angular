@@ -178,7 +178,8 @@
                 </div>
                 <!-- Product Description -->
                 <div class="product-description">
-                    <h4 class="product-price">{{ item.Gia }}</h4>
+                    <h4 class="product-price">{{ formatCurrency(item.Gia) }} VNĐ</h4>
+                    
                     <p (click)="redirectToDetailPage(item)">{{ item.Tensanpham }}</p>
                     <!-- Add to Cart -->
                     <a style="cursor: pointer;"  class="add-to-cart-btn" (click)="addToCart(item)">THÊM VÀO GIỎ HÀNG</a>

@@ -10,8 +10,9 @@ import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { TintucComponent } from './tintuc/tintuc.component';
 import { ShopComponent } from './shop/shop.component';
-
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { CurrencyPipe } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -28,8 +29,12 @@ import { ShopComponent } from './shop/shop.component';
     UserRoutingModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    CurrencyPipe,
+    DecimalPipe
+  ],
   bootstrap: [UserComponent]
 })
 export class UserModule { }

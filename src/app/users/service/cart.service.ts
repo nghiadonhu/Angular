@@ -35,6 +35,11 @@ export class CartService {
     return this.cartItemsSubject.asObservable();
   }
 
+  getTotalPrice(): number {
+    const currentItems = this.cartItemsSubject.value;
+    return currentItems.reduce((total, item) => total + item.totalPrice, 0);
+  }
+
 //   removeFromCart(index: number): void {
 //     const currentItems = this.cartItemsSubject.value;
 //     const updatedItems = currentItems.filter((_, i) => i !== index);

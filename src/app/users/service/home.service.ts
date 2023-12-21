@@ -30,4 +30,11 @@ export class HomeService {
       const url = `http://localhost:3000/get-one/${id}`;
       return this.http.get<any>(url);
     }
+    getItemByIdsp(id: any): Observable<any> {
+      const url = `http://localhost:3000/sanpham/get-one/${id}`;
+      return this.http.get<any>(url);
+    }
+    createOrder(orderData: any): Observable<any> {
+      return this.http.post(`http://localhost:3000/api/createOrder`, orderData);
+    }
 }

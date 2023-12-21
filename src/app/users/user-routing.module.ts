@@ -14,7 +14,7 @@ const routes: Routes = [
     component:IndexComponent
   },
   {
-    path:'chitiet',
+    path:'chitiet/:id',
     component:ChitietComponent
   },
   {

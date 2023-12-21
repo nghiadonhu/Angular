@@ -43,6 +43,7 @@
                         <a href="#">Xóa giỏ hàng</a>
                         
                         <a href="#">Cập nhập giỏ hàng</a>
+                        <p>Tổng tiền: {{ total | currency: 'VND' }}</p>
                     </div>
                 </div>
 
@@ -95,7 +96,7 @@
                     <ul class="cart-total-chart">
                         <li><span>Tổng phụ</span> <span>18.841.091 VNĐ</span></li>
                         <li><span>Vận chuyển</span> <span>Free</span></li>
-                        <li><span><strong>Tổng tiền</strong></span> <span><strong>18.841.091 VNĐ</strong></span></li>
+                        <li><span><strong>Tổng tiền</strong></span> <span><strong>{{ total | currency: 'VND' }}</strong></span></li>
                     </ul>
                     <a href="checkout.html" class="btn karl-checkout-btn">Tiến hành thanh toán</a>
                 </div>
