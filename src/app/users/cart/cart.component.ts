@@ -28,6 +28,10 @@ export class CartComponent implements OnInit {
     this.updateTotal();
   }
 
+  clearCart(): void {
+    this.cartService.clearCart();
+  }
+
   private updateTotal(): void {
     this.total = this.cartService.getTotalPrice();
   }

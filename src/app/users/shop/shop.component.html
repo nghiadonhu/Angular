@@ -11,7 +11,7 @@
                         <div class="row">
                             <div class="col-12 col-lg-5">
                                 <div class="quickview_pro_img">
-                                    <img src="img/xe1.png" alt="">
+                                    <img src="../assets/img/xe1.png" alt="">
                                 </div>
                             </div>
                             <div class="col-12 col-lg-7">
@@ -84,58 +84,60 @@
                                 <ul id="menu-content2" class="menu-content collapse out">
                                     <!-- Single Item -->
                                     <li data-toggle="collapse" data-target="#women2">
-                                        <a href="#">HonDa</a>
-                                        <ul class="sub-menu collapse show" id="women2">
-                                            <li><a href="#">Midi Dresses</a></li>
-                                            <li><a href="#">Maxi Dresses</a></li>
-                                            <li><a href="#">Prom Dresses</a></li>
-                                            <li><a href="#">Little Black Dresses</a></li>
-                                            <li><a href="#">Mini Dresses</a></li>
+                                        <!-- <a href="#">HonDa</a> -->
+                                        <ul class="sub-menu collapse show"  *ngFor="let item of subjects">
+                                            <li><a href="#" (click)="onCategoryClick($event, item.id)">{{ (item.Tenloai) }}</a></li>
+                                            <!-- <li data-toggle="collapse" data-target="#women2">
+                                                <ul class="sub-menu collapse show" id="women2" *ngFor="let item of subjects">
+                                                
+                                                  <li><a href="#" (click)="onCategoryClick($event, item.id)">{{ item.Tenloai }}</a></li>
+                                                </ul>
+                                              </li> -->
                                         </ul>
                                     </li>
                                     <!-- Single Item -->
-                                    <li data-toggle="collapse" data-target="#man2" class="collapsed">
+                                    <!-- <li data-toggle="collapse" data-target="#man2" class="collapsed">
                                         <a href="#">Triumph</a>
                                         <ul class="sub-menu collapse" id="man2">
                                             <li><a href="#">Man Dresses</a></li>
                                             <li><a href="#">Man Black Dresses</a></li>
                                             <li><a href="#">Man Mini Dresses</a></li>
                                         </ul>
-                                    </li>
+                                    </li> -->
                                     <!-- Single Item -->
-                                    <li data-toggle="collapse" data-target="#kids2" class="collapsed">
+                                    <!-- <li data-toggle="collapse" data-target="#kids2" class="collapsed">
                                         <a href="#">Yamaha</a>
                                         <ul class="sub-menu collapse" id="kids2">
                                             <li><a href="#">Children Dresses</a></li>
                                             <li><a href="#">Mini Dresses</a></li>
                                         </ul>
-                                    </li>
+                                    </li> -->
                                     <!-- Single Item -->
-                                    <li data-toggle="collapse" data-target="#bags2" class="collapsed">
+                                    <!-- <li data-toggle="collapse" data-target="#bags2" class="collapsed">
                                         <a href="#">Harley - Davidson</a>
                                         <ul class="sub-menu collapse" id="bags2">
                                             <li><a href="#">Bags</a></li>
                                             <li><a href="#">Purses</a></li>
                                         </ul>
-                                    </li>
+                                    </li> -->
                                     <!-- Single Item -->
-                                    <li data-toggle="collapse" data-target="#eyewear2" class="collapsed">
+                                    <!-- <li data-toggle="collapse" data-target="#eyewear2" class="collapsed">
                                         <a href="#">Benelli</a>
                                         <ul class="sub-menu collapse" id="eyewear2">
                                             <li><a href="#">Eyewear Style 1</a></li>
                                             <li><a href="#">Eyewear Style 2</a></li>
                                             <li><a href="#">Eyewear Style 3</a></li>
                                         </ul>
-                                    </li>
+                                    </li> -->
                                     <!-- Single Item -->
-                                    <li data-toggle="collapse" data-target="#footwear2" class="collapsed">
+                                    <!-- <li data-toggle="collapse" data-target="#footwear2" class="collapsed">
                                         <a href="#">Kawasaki</a>
                                         <ul class="sub-menu collapse" id="footwear2">
                                             <li><a href="#">Footwear 1</a></li>
                                             <li><a href="#">Footwear 2</a></li>
                                             <li><a href="#">Footwear 3</a></li>
                                         </ul>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                         </div>
@@ -190,7 +192,7 @@
                             <!-- Single Recommended Product -->
                             <div class="single-recommended-product d-flex mb-30">
                                 <div class="single-recommended-thumb mr-3">
-                                    <img src="img/xe2.png" alt="">
+                                    <img src="../assets/img/xe2.png" alt="">
                                 </div>
                                 <div class="single-recommended-desc">
                                     <h6>Future 125 FI</h6>
@@ -200,7 +202,7 @@
                             <!-- Single Recommended Product -->
                             <div class="single-recommended-product d-flex mb-30">
                                 <div class="single-recommended-thumb mr-3">
-                                    <img src="img/xe3.png" alt="">
+                                    <img src="../assets/img/xe3.png" alt="">
                                 </div>
                                 <div class="single-recommended-desc">
                                     <h6>Super Cub C125</h6>
@@ -210,7 +212,7 @@
                             <!-- Single Recommended Product -->
                             <div class="single-recommended-product d-flex">
                                 <div class="single-recommended-thumb mr-3">
-                                    <img src="img/xe4.png" alt="">
+                                    <img src="../assets/img/xe4.png" alt="">
                                 </div>
                                 <div class="single-recommended-desc">
                                     <h6>Wave RSX FI 110</h6>
@@ -227,166 +229,25 @@
                     <div class="row">
 
                         <!-- Single gallery Item -->
-                        <div class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig" data-wow-delay="0.2s">
+                        <div class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig" data-wow-delay="0.2s" *ngFor="let product of products">
                             <!-- Product Image -->
                             <div class="product-img">
-                                <img src="img/xeso1.png" alt="">
+                                <img src="../assets/img/{{product.Anh}}" alt="">
                                 <div class="product-quicview">
                                     <a href="#" data-toggle="modal" data-target="#quickview"><i class="ti-plus"></i></a>
                                 </div>
                             </div>
                             <!-- Product Description -->
                             <div class="product-description">
-                                <h4 class="product-price">Từ 17.859.273 VNĐ</h4>
-                                <p>Wave Alpha 110cc</p>
+                                <h4 class="product-price">{{ formatCurrency(product.Gia) }} VNĐ</h4>
+                                <p>{{product.Tensanpham}}</p>
                                 <!-- Add to Cart -->
                                 <a href="#" class="add-to-cart-btn">THÊM VÀO GIỎ HÀNG</a>
                             </div>
                         </div>
 
                         <!-- Single gallery Item -->
-                        <div class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig" data-wow-delay="0.3s">
-                            <!-- Product Image -->
-                            <div class="product-img">
-                                <img src="img/xe1.png" alt="">
-                                <div class="product-quicview">
-                                    <a href="#" data-toggle="modal" data-target="#quickview"><i class="ti-plus"></i></a>
-                                </div>
-                            </div>
-                            <!-- Product Description -->
-                            <div class="product-description">
-                                <h4 class="product-price">Từ 18.841.091 VNĐ</h4>
-                                <p>Blade 110</p>
-                                <!-- Add to Cart -->
-                                <a href="#" class="add-to-cart-btn">THÊM VÀO GIỎ HÀNG</a>
-                            </div>
-                        </div>
-
-                        <!-- Single gallery Item -->
-                        <div class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig" data-wow-delay="0.4s">
-                            <!-- Product Image -->
-                            <div class="product-img">
-                                <img src="img/xe2.png" alt="">
-                                <div class="product-quicview">
-                                    <a href="#" data-toggle="modal" data-target="#quickview"><i class="ti-plus"></i></a>
-                                </div>
-                            </div>
-                            <!-- Product Description -->
-                            <div class="product-description">
-                                <h4 class="product-price">Từ 30.328.363 VNĐ</h4>
-                                <p>Future 125 FI</p>
-                                <!-- Add to Cart -->
-                                <a href="#" class="add-to-cart-btn">THÊM VÀO GIỎ HÀNG</a>
-                            </div>
-                        </div>
-
-                        <!-- Single gallery Item -->
-                        <div class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig" data-wow-delay="0.5s">
-                            <!-- Product Image -->
-                            <div class="product-img">
-                                <img src="img/xe3.png" alt="">
-                                <div class="product-quicview">
-                                    <a href="#" data-toggle="modal" data-target="#quickview"><i class="ti-plus"></i></a>
-                                </div>
-                            </div>
-                            <!-- Product Description -->
-                            <div class="product-description">
-                                <h4 class="product-price">Từ 85.801.091 VNĐ</h4>
-                                <p>Super Cub C125</p>
-                                <!-- Add to Cart -->
-                                <a href="#" class="add-to-cart-btn">THÊM VÀO GIỎ HÀNG</a>
-                            </div>
-                        </div>
-
-                        <!-- Single gallery Item -->
-                        <div class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig" data-wow-delay="0.6s">
-                            <!-- Product Image -->
-                            <div class="product-img">
-                                <img src="img/xe4.png" alt="">
-                                <div class="product-quicview">
-                                    <a href="#" data-toggle="modal" data-target="#quickview"><i class="ti-plus"></i></a>
-                                </div>
-                            </div>
-                            <!-- Product Description -->
-                            <div class="product-description">
-                                <h4 class="product-price">Từ 21.688.363 VNĐ</h4>
-                                <p>Wave RSX FI 110</p>
-                                <!-- Add to Cart -->
-                                <a href="#" class="add-to-cart-btn">THÊM VÀO GIỎ HÀNG</a>
-                            </div>
-                        </div>
-
-                        <!-- Single gallery Item -->
-                        <div class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig" data-wow-delay="0.7s">
-                            <!-- Product Image -->
-                            <div class="product-img">
-                                <img src="img/xe23.jpg" alt="">
-                                <div class="product-quicview">
-                                    <a href="#" data-toggle="modal" data-target="#quickview"><i class="ti-plus"></i></a>
-                                </div>
-                            </div>
-                            <!-- Product Description -->
-                            <div class="product-description">
-                                <h4 class="product-price">Từ 105.500.000 VNĐ</h4>
-                                <p>CB150R The Streetster</p>
-                                <!-- Add to Cart -->
-                                <a href="#" class="add-to-cart-btn">THÊM VÀO GIỎ HÀNG</a>
-                            </div>
-                        </div>
-
-                        <!-- Single gallery Item -->
-                        <div class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig" data-wow-delay="0.8s">
-                            <!-- Product Image -->
-                            <div class="product-img">
-                                <img src="img/xe26.png" alt="">
-                                <div class="product-quicview">
-                                    <a href="#" data-toggle="modal" data-target="#quickview"><i class="ti-plus"></i></a>
-                                </div>
-                            </div>
-                            <!-- Product Description -->
-                            <div class="product-description">
-                                <h4 class="product-price">Từ 30.328.363 VNĐ</h4>
-                                <p>CBR150R</p>
-                                <!-- Add to Cart -->
-                                <a href="#" class="add-to-cart-btn">THÊM VÀO GIỎ HÀNG</a>
-                            </div>
-                        </div>
-
-                        <!-- Single gallery Item -->
-                        <div class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig" data-wow-delay="0.9s">
-                            <!-- Product Image -->
-                            <div class="product-img">
-                                <img src="img/xe25.png" alt="">
-                                <div class="product-quicview">
-                                    <a href="#" data-toggle="modal" data-target="#quickview"><i class="ti-plus"></i></a>
-                                </div>
-                            </div>
-                            <!-- Product Description -->
-                            <div class="product-description">
-                                <h4 class="product-price">Từ 46.160.000 VNĐ</h4>
-                                <p>Winner X</p>
-                                <!-- Add to Cart -->
-                                <a href="#" class="add-to-cart-btn">THÊM VÀO GIỎ HÀNG</a>
-                            </div>
-                        </div>
-
-                        <!-- Single gallery Item -->
-                        <div class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig" data-wow-delay="1s">
-                            <!-- Product Image -->
-                            <div class="product-img">
-                                <img src="img/xemoto1.jpg" alt="">
-                                <div class="product-quicview">
-                                    <a href="#" data-toggle="modal" data-target="#quickview"><i class="ti-plus"></i></a>
-                                </div>
-                            </div>
-                            <!-- Product Description -->
-                            <div class="product-description">
-                                <h4 class="product-price">Từ 192.490.000 VNĐ</h4>
-                                <p>CBR500R 2022</p>
-                                <!-- Add to Cart -->
-                                <a href="#" class="add-to-cart-btn">THÊM VÀO GIỎ HÀNG</a>
-                            </div>
-                        </div>
+                      
                     </div>
                 </div>
 

@@ -11,6 +11,10 @@ export class HomeService {
     getList() : Observable<any[]> {
       return this.http.get<any>('http://localhost:3000/sp');
     }
+
+    getListloai() : Observable<any[]> {
+      return this.http.get<any>('http://localhost:3000/');
+    }
   
     removeItem(id: number): Observable<any> {
       const url = `http://localhost:3000/remove/${id}`;
@@ -36,5 +40,9 @@ export class HomeService {
     }
     createOrder(orderData: any): Observable<any> {
       return this.http.post(`http://localhost:3000/api/createOrder`, orderData);
+    }
+    getlistByIdsp(id: any): Observable<any> {
+      const url = `http://localhost:3000/get-list/${id}`;
+      return this.http.get<any>(url);
     }
 }

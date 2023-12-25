@@ -66,6 +66,14 @@ removeFromCart(index: number): void {
     }
   }
   
+  clearCart(): void {
+    // Clear the cart items
+    this.cartItemsSubject.next([]);
+  
+    // Update LocalStorage
+    localStorage.removeItem('cart');
+  }
+  
   
   
 

@@ -40,7 +40,7 @@
                         <a href="shop-grid-left-sidebar.html">Tiếp tục mua</a>
                     </div>
                     <div class="update-checkout w-50 text-right">
-                        <a href="#">Xóa giỏ hàng</a>
+                        <a (click)="clearCart()">Xóa giỏ hàng</a>
                         
                         <a href="#">Cập nhập giỏ hàng</a>
                         <p>Tổng tiền: {{ total | currency: 'VND' }}</p>

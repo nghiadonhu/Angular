@@ -26,7 +26,7 @@ export class CheckoutComponent implements OnInit {
       Diachi: ['', Validators.required],
       Sdt: ['', [Validators.required, Validators.min(0)]],
       Email: ['', [Validators.required, Validators.email]],
-      sanphamjson: this.formBuilder.array([]),
+      Sanphamjson: this.formBuilder.array([]),
     });
 
     // Gọi service để lấy dữ liệu từ cart
@@ -36,12 +36,12 @@ export class CheckoutComponent implements OnInit {
 
       // Tự động gán các trường từ cartItems vào sanphamjson
       const sanphamjsonControls = this.cartItems.map(item => this.createSanphamGroup(item));
-      this.orderForm.setControl('sanphamjson', this.formBuilder.array(sanphamjsonControls));
+      this.orderForm.setControl('Sanphamjson', this.formBuilder.array(sanphamjsonControls));
     });
   }
 
   get sanphamjson(): FormArray {
-    return this.orderForm.get('sanphamjson') as FormArray;
+    return this.orderForm.get('Sanphamjson') as FormArray;
   }
 
   addSanpham(item: any): void {
@@ -82,6 +82,7 @@ export class CheckoutComponent implements OnInit {
     this.homeService.createOrder(orderData).subscribe(
       (response) => {
         console.log('Đơn hàng đã được tạo:', response);
+        this.cartService.clearCart();
         // Thực hiện các hành động sau khi tạo đơn hàng thành công
       },
       (error) => {
