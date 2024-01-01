@@ -54,7 +54,7 @@ var db = require('./dbconnect');
 // });
 
 
-router.post('/api/createOrder', (req, res) => {
+router.post('/api/createOrder1', (req, res) => {
     const {
       Hoten,
       Sdt,
@@ -243,6 +243,110 @@ router.get('/ctdh',(req,res)=>{
         res.json(result);
     })
 });
+
+router.get('/ctdh/get-one/:id',function(req,res){
+  var query = "Select * from ctdh where Donhang_id = " + req.params.id;
+  db.query(query,function(err,result) {
+      if(err) res.status(500).send('Loi cau lenh truy van')
+      res.json(result);
+  })
+});
+
+
+
+router.post('/api/createOrder', (req, res) => {
+  const {
+      Hoten,
+      Sdt,
+      Email,
+      Diachi,
+      Ngaydat,
+      Tongtien,
+      Sanphamjson,
+  } = req.body;
+
+  // Insert data into DonHang table
+  const insertDonHangQuery = `
+    INSERT INTO DonHang (Hoten, Sdt, Email, Diachi, Ngaydat, Tongtien)
+    VALUES (?, ?, ?, ?, ?, ?)`;
+
+  db.query(
+      insertDonHangQuery,
+      [Hoten, Sdt, Email, Diachi, Ngaydat, Tongtien],
+      (err, results) => {
+          if (err) {
+              console.error('Error inserting into DonHang:', err);
+              res.status(500).send('Internal Server Error');
+              return;
+          }
+
+          const Donhang_id = results.insertId;
+
+          // Parse Sanphamjson
+          let sanphamData;
+          try {
+              // Check if Sanphamjson is already an object
+              if (typeof Sanphamjson === 'string') {
+                  sanphamData = JSON.parse(Sanphamjson);
+              } else {
+                  // If not a string, try to convert to JSON
+                  sanphamData = JSON.parse(JSON.stringify(Sanphamjson));
+              }
+          } catch (error) {
+              console.error('Error parsing Sanphamjson:', error);
+              res.status(400).send('Invalid JSON format in Sanphamjson');
+              return;
+          }
+
+          // Insert data into CTDH table
+          const insertCTDHQuery = `
+        INSERT INTO CTDH (Donhang_id, Sanpham_id, Tensanpham, Anh, Soluong, Gia, Tongtien)
+        VALUES (?, ?, ?, ?, ?, ?, ?)`;
+
+          // Update Số Lượng Sản Phẩm
+          const updateSoluongQuery = `
+        UPDATE Sanpham SET Soluong = Soluong - ? WHERE id = ?`;
+
+          sanphamData.forEach((sanpham) => {
+              const {
+                  Sanpham_id,
+                  Tensanpham,
+                  Anh,
+                  Soluong,
+                  Gia,
+                  Tongtien,
+              } = sanpham;
+
+              db.query(
+                  insertCTDHQuery,
+                  [Donhang_id, Sanpham_id, Tensanpham, Anh, Soluong, Gia, Tongtien],
+                  (err) => {
+                      if (err) {
+                          console.error('Error inserting into CTDH:', err);
+                          res.status(500).send('Internal Server Error');
+                          return;
+                      }
+
+                      // Trừ Số Lượng Sản Phẩm
+                      db.query(
+                          updateSoluongQuery,
+                          [Soluong, Sanpham_id],
+                          (err) => {
+                              if (err) {
+                                  console.error('Error updating Soluong:', err);
+                                  res.status(500).send('Internal Server Error');
+                              }
+                          }
+                      );
+                  }
+              );
+          });
+
+          res.json({ Result: '' });
+      }
+  );
+});
+
 
 
 

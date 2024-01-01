@@ -1,7 +1,7 @@
 var router = require('express')();
 var db = require('./dbconnect');
 
-router.get('/',(req,res)=>{
+router.get('/ncc',(req,res)=>{
     var query = 'Select * from ncc'
     db.query(query,(error,result)=>{
         if(error) res.status(500).send('Loi ket noi');

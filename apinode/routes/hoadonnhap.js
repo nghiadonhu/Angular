@@ -24,6 +24,14 @@ router.get('/hoadonnhap/get-one/:id',function(req,res){
         res.json(result);
     })
 });
+
+router.get('/cthdn/get-one/:id',function(req,res){
+    var query = "Select * from cthdn where Hoadonnhap_id = " + req.params.id;
+    db.query(query,function(err,result) {
+        if(err) res.status(500).send('Loi cau lenh truy van')
+        res.json(result);
+    })
+  });
 // router.post('/edit/:id',function(req,res){
 //     var Tenloai = req.body.Tenloai;
 //     var query = "update hoadonnhap set Tenloai ="+ Tenloai+"", update_at=NOW() where = id + req.params.id

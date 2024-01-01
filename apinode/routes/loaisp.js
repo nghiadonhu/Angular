@@ -16,6 +16,19 @@ router.get('/get-one/:id',function(req,res){
         res.json(result);
     })
 });
+
+router.get('/get-list/:id', function(req, res) {
+    var query = "SELECT * FROM sanpham WHERE Maloai_id = " + req.params.id;
+    db.query(query, function(err, result) {
+        if (err) {
+            res.status(500).send('Lỗi câu lệnh truy vấn');
+        } else {
+            res.json(result);
+        }
+    });
+});
+
+
 // router.post('/edit/:id',function(req,res){
 //     var Tenloai = req.body.Tenloai;
 //     var query = "update loaisanpham set Tenloai ="+ Tenloai+"", update_at=NOW() where = id + req.params.id

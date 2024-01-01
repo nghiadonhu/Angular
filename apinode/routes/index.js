@@ -115,24 +115,67 @@ router.post('/ptb1', function (req, res) {
   }
 });
 
-
 var public = path.join(__dirname, '../public');
+
 router.post('/upload', function (req, res) {
   let sampleFile;
   let uploadPath;
+
   if (!req.files || Object.keys(req.files).length === 0) {
     return res.status(400).send('Khong co file upload.');
   }
-  console.log('den day');
+
   sampleFile = req.files.Anh;
   uploadPath = public + '/uploads/' + sampleFile.name;
-  console.log(uploadPath);
+
   sampleFile.mv(uploadPath, function (err) {
-    if (err)
+    if (err) {
       return res.status(500).send(err);
-    res.send('File uploaded!');
+    }
+
+    // Trả về tên file thành công
+    res.json({ filename: sampleFile.name });
   });
-})
+});
+// router.post('/upload', function (req, res) {
+//   let sampleFile;
+//   let uploadPath;
+  
+//   if (!req.files || Object.keys(req.files).length === 0) {
+//     return res.status(400).send('Khong co file upload.');
+//   }
+  
+//   sampleFile = req.files.Anh;
+//   uploadPath = public + '/uploads/' + sampleFile.name;
+  
+//   sampleFile.mv(uploadPath, function (err) {
+//     if (err) {
+//       return res.status(500).send(err);
+//     }
+    
+   
+//     res.json({ filename: sampleFile.name });
+//   });
+// });
+
+
+// var public = path.join(__dirname, '../public');
+// router.post('/upload', function (req, res) {
+//   let sampleFile;
+//   let uploadPath;
+//   if (!req.files || Object.keys(req.files).length === 0) {
+//     return res.status(400).send('Khong co file upload.');
+//   }
+//   console.log('den day');
+//   sampleFile = req.files.Anh;
+//   uploadPath = public + '/uploads/' + sampleFile.name;
+//   console.log(uploadPath);
+//   sampleFile.mv(uploadPath, function (err) {
+//     if (err)
+//       return res.status(500).send(err);
+//     res.send('File uploaded!');
+//   });
+// })
 module.exports = router;
 
 
