@@ -1,0 +1,58 @@
+
+<!-- *ngFor="let product of product" -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Quản lý sản phẩm</h6>
+    </div>
+
+    <div class="card-body">
+      <a class="btn btn-dark fa fa-plus" [routerLink]="['/admin/adddatasp']">Thêm</a>
+
+      <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th>STT</th>
+              <!-- <th>Khachhang_id</th> -->
+              <th>Donhang_id</th>
+             
+              <th>Sanpham_id</th>
+              <th>Tensanpham</th>
+              <th>Anh</th>
+              <th>Soluong</th>
+              <th>Gia</th>
+              <th>Tongtien</th>
+              
+              <!-- `Ctdh_id`, `Donhang_id`, `Sanpham_id`, `Tensanpham`, `Anh`, `Soluong`, `Gia`, `Tongtien` -->
+              <!-- <th></th>
+                                            <th></th> -->
+
+                                           
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let item of product;let i = index">
+              <td>{{i}}</td>
+              <!-- <td>{{item.Khachhang_id}}</td> -->
+              <td>{{item.Donhang_id}}</td>
+             
+
+              <td>{{item.Sanpham_id}}</td>
+              <td>{{item.Tensanpham}}</td>
+              <td>{{item.Anh}}</td>
+              <td>{{item.Soluong}}</td>
+              <td>{{item.Gia}}</td>
+              <td>{{item.Tongtien}}</td>
+            
+
+
+
+              
+
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

@@ -1,14 +1,40 @@
 <!-- your-component.component.html -->
 
-<div>
+<!-- <div>
     <h2>Add New Item</h2>
   
-    <!-- Simple form to input Tenloai -->
+    
     <form #addItemForm="ngForm" (ngSubmit)="addNewItem(addItemForm.value.Tenloai)">
       <label for="Tenloai">Item Name:</label>
       <input type="text" id="Tenloai" name="Tenloai" ngModel required>
   
       <button type="submit">Add Item</button>
     </form>
-  </div>
+  </div> -->
   
+
+  <div class="container-fluid" >
+    <form #addItemForm="ngForm" (ngSubmit)="addNewItem(addItemForm.value.Tenloai)">
+        
+        <div class="form-horizontal">
+            <h4>Quản lý loại sản phẩm</h4>
+            <hr />
+          
+            <div class="form-group">
+                Name
+                <div class="col-md-10">
+                  <input type="text" id="Tenloai" name="Tenloai" class="form-control" ngModel required />
+
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button class="btn btn-warning" type="submit"> Add data</button>
+                </div>
+            </div>
+        </div>
+        <div>
+          
+        </div>
+    </form>
+</div>

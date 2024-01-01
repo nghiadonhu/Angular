@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { CartService } from '../service/cart.service';
 import { CurrencyPipe } from '@angular/common';
 import { DecimalPipe } from '@angular/common';
+
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
@@ -20,8 +21,12 @@ import { DecimalPipe } from '@angular/common';
 export class IndexComponent implements OnInit {
   constructor(private api : HomeService, private router: Router,private cartService: CartService,private currencyPipe: CurrencyPipe,private decimalPipe: DecimalPipe) {}
   subjects: any;
+  
   selectedItem: any | null = null;
-
+  currentPage: number = 1;
+  reloadPage(): void {
+    location.reload();
+  }
 ngOnInit(): void {
       
   this.api.getList().subscribe(res => {
@@ -33,6 +38,12 @@ addToCart(item: any): void {
   console.log('Adding to cart:', item);
   this.cartService.addToCart(item);
  
+}
+
+onPageChange(page: number) {
+  console.log('Current Page:', page);
+  this.currentPage = page;
+  // Gọi hàm để lấy dữ liệu mới hoặc thực hiện các hành động liên quan đến chuyển trang
 }
 
 // formatCurrency(price: number | null): string {

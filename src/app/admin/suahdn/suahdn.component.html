@@ -1,0 +1,42 @@
+
+
+<div class="container">
+    <h2>Edit Item</h2>
+  
+    <form #editItemFormhdn="ngForm" (ngSubmit)="editItemhdn(editItemFormhdn.value.id, editItemFormhdn.value.Nhanvien_id, editItemFormhdn.value.Thanhtien, editItemFormhdn.value.Ngaynhap, editItemFormhdn.value.Ncc_id)" class="needs-validation" novalidate>
+      <div class="form-group">
+        <label for="id">Item ID:</label>
+        <input type="number" id="id" name="id" [(ngModel)]="category.id" class="form-control" required>
+      </div>
+  
+
+
+      <div class="form-group">
+        <label for="Nhanvien_id">Nhân viên:</label>
+        <select id="Nhanvien_id" name="Nhanvien_id" [(ngModel)]="selectedNhanvien_id" class="form-control" required>
+          <option *ngFor="let subject of nv" [value]="subject.id">{{ subject.Tennhanvien }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="Thanhtien">Giá:</label>
+        <input type="number" id="Thanhtien" name="Thanhtien" [(ngModel)]="category.Thanhtien" class="form-control" required>
+      </div>
+
+      <div class="form-group">
+        <label for="Ngaynhap">Ngày nhập:</label>
+        <input type="text" id="Ngaynhap" name="Ngaynhap" [(ngModel)]="category.Ngaynhap" class="form-control" required>
+      </div>
+
+      <div class="form-group">
+        <label for="Ncc_id">Nhà cung cấp:</label>
+        <select id="Ncc_id" name="Ncc_id" [(ngModel)]="selectedNcc_id" class="form-control" required>
+          <option *ngFor="let subject of ncc" [value]="subject.id">{{ subject.Tenncc }}</option>
+        </select>
+      </div>
+  
+  
+      <button type="submit" class="btn btn-primary">Edit Item</button>
+    </form>
+  </div>
+  

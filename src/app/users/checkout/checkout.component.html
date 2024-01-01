@@ -59,10 +59,10 @@
 
                     <ul class="order-details-form mb-4" *ngFor="let cartItem of cartItems">
                         <li><span>Sản phẩm</span> <span>Total</span></li>
-                        <li><span>{{ cartItem.Tensanpham }}</span> <span>{{ cartItem.Gia }} VNĐ</span></li>
-                        <li><span>Tổng phụ</span> <span>{{ cartItem.Gia }} VNĐ</span></li>
+                        <li><span>{{ cartItem.Tensanpham }}</span> <span>{{ formatCurrency(cartItem.Gia) }} VNĐ </span></li>
+                        <li><span>Tổng phụ</span> <span>{{ formatCurrency(cartItem.Gia) }} VNĐ</span></li>
                         <li><span>Phí vận chuyển</span> <span>Free</span></li>
-                        <li><span>Tổng tiền</span> <span>{{ total | currency: 'VND' }}</span></li>
+                        <li><span>Tổng tiền</span> <span>{{ formatCurrency(total) }} VNĐ</span></li>
                     </ul>
 
                     

@@ -13,6 +13,8 @@ import { ShopComponent } from './shop/shop.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CurrencyPipe } from '@angular/common';
 import { DecimalPipe } from '@angular/common';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,10 @@ import { DecimalPipe } from '@angular/common';
     UserRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSnackBarModule,
+    NgxPaginationModule
+    
   ],
   providers: [
     CurrencyPipe,

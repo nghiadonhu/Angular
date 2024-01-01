@@ -1,0 +1,113 @@
+<!-- <h3>Thông tin loại xe</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">STT</th>
+            <th scope="col">Mã loại</th>
+            <th scope="col">Tên loại</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of subjects;let i = index">
+            <td>{{ i }}</td>
+            <td>{{ item.id }}</td>
+            <td>{{ item.Maloai_id }}</td>
+            <td>{{ item.Tenloai }}</td>
+            <td>
+            
+              <button (click)="removeItem(item.id)">Xóa</button>
+            </td>
+            <td>
+              <button (click)="editItem(item.id, item.Tenloai)">Sửa</button>
+            </td>
+        </tr>
+
+    </tbody>
+</table> -->
+
+
+
+
+<!-- <div class="w3-row w3-grayscale" *ngFor="let item of subjects;let i = index">
+    <div class="w3-col l3 s6" >
+      <div class="w3-container">
+        <img [src]="'/assets/karlmaster/img/' + item.Anh" style="width:100%">
+
+        <p>{{ item.Tensanpham }}<br><b>$24.99</b></p>
+      </div>
+      
+    </div>
+
+    
+  </div> -->
+
+<!-- <div>
+    <h2>Add New Item</h2>
+  
+    
+    <form #addItemForm="ngForm" (ngSubmit)="addNewItem(addItemForm.value.Tenloai)">
+      <label for="Tenloai">Item Name:</label>
+      <input type="text" id="Tenloai" name="Tenloai" ngModel required>
+  
+      <button type="submit">Add Item</button>
+    </form>
+  </div> -->
+
+<!-- your-component.component.html -->
+
+<div>
+
+
+
+
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Quản lý hóa đơn nhập</h6>
+      </div>
+  
+      <div class="card-body">
+        <a class="btn btn-dark fa fa-plus" [routerLink]="['/admin/adddatahdn']">Thêm</a>
+  
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>STT</th>
+                <!-- <th>id</th> -->
+                <th>Nhanvien_id</th>
+                <th>Thanhtien</th>
+                <th>Ngaynhap</th>
+                <th>Ncc_id</th>
+               
+              </tr>
+            </thead>
+  
+            <tbody>
+              <tr *ngFor="let item of subjects;let i = index">
+                <td>{{i}}</td>
+                <td>{{item.Nhanvien_id}}</td>
+                <td>{{item.Thanhtien}}</td>
+                
+  
+                <td>{{item.Ngaynhap}}</td>
+                <td>{{item.Ncc_id}}</td>
+               
+  
+  
+  
+                <td>
+                  <a (click)="editItemhdn(item.id,item.Nhanvien_id,item.Thanhtien,item.Ngaynhap,item.Ncc_id)" class="btn btn-warning fa fa-pencil">Sửa</a>
+                  <a (click)="redirectToDetailPage(item)"class="btn btn-info fa fa-eye"></a>
+                  <a (click)="removeItemhdn(item.id)" class="btn btn-danger fa fa-trash">Xóa</a>
+  
+                </td>
+  
+  
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>

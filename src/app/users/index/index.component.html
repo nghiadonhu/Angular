@@ -166,7 +166,7 @@
         <div class="row karl-new-arrivals">
             <!-- Single gallery Item Start -->
             <!-- Single gallery Item Start -->
-            <div  class="col-12 col-sm-6 col-md-4 single_gallery_item women wow fadeInUpBig" *ngFor="let item of subjects" data-wow-delay="0.3s"  >
+            <div  class="col-12 col-sm-6 col-md-4 single_gallery_item women wow fadeInUpBig" *ngFor="let item of subjects| paginate: { itemsPerPage: 10, currentPage: currentPage }" data-wow-delay="0.3s"  >
                 <!-- Product Image -->
                 <div class="product-img">
                     <img src="../assets/img/{{item.Anh}}" alt="">
@@ -182,8 +182,10 @@
                     <!-- Add to Cart -->
                     <a style="cursor: pointer;"  class="add-to-cart-btn" (click)="addToCart(item)">THÊM VÀO GIỎ HÀNG</a>
                 </div>
-            </div>                  
+            </div>  
+                   
         </div>
+        <pagination-controls [(ngModel)]="currentPage"></pagination-controls>       
     </div>
     <!-- <div class="container">
         <div class="row karl-new-arrivals">

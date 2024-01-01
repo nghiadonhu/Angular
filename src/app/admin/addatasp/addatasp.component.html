@@ -1,52 +1,71 @@
-<!-- your-component.component.html -->
+<!-- Add Bootstrap classes to your HTML elements -->
+<div class="container">
+  <h2>Add New Item</h2>
 
-<div>
-    <h2>Add New Item</h2>
-  
-    <!-- Simple form to input item details -->
-    <form #addItemForm="ngForm" (ngSubmit)="addNewItem(addItemForm.value)">
+  <form #addItemForm="ngForm" (ngSubmit)="addNewItem(addItemForm.value)" class="needs-validation" novalidate>
+    <div class="form-group">
       <label for="Maloai_id">Category:</label>
-      <select id="Maloai_id" name="Maloai_id" [(ngModel)]="selectedMaloai_id" required>
+      <select id="Maloai_id" name="Maloai_id" [(ngModel)]="selectedMaloai_id" class="form-control" required>
         <option *ngFor="let subject of subjects" [value]="subject.id">{{ subject.Tenloai }}</option>
       </select>
-      <!-- <label for="Maloai_id">Maloai:</label>
-      <input type="text" id="Maloai_id" name="Maloai_id" ngModel required> -->
+    </div>
 
+    <div class="form-group">
       <label for="Tensanpham">Product Name:</label>
-      <input type="text" id="Tensanpham" name="Tensanpham" ngModel required>
-      
+      <input type="text" id="Tensanpham" name="Tensanpham" ngModel class="form-control" required>
+    </div>
+
+    <div class="form-group">
       <label for="Anh">Image URL:</label>
-      <input type="text" id="Anh" name="Anh" ngModel required>
-      <!-- <input type="file" (change)="onFileSelected($event)">
-      <button (click)="uploadFile()">Upload</button> -->
-  
+      <!-- <input type="text" id="Anh" name="Anh" ngModel class="form-control" required> -->
+      <input type="file" ngModel (change)="onFileSelected($event)" />
+    </div>
+
+    <div class="form-group">
       <label for="Soluong">Quantity:</label>
-      <input type="number" id="Soluong" name="Soluong" ngModel required>
-  
+      <input type="number" id="Soluong" name="Soluong" ngModel class="form-control" required>
+    </div>
+
+    <div class="form-group">
       <label for="Gia">Price:</label>
-      <input type="number" id="Gia" name="Gia" ngModel required>
-  
-      <label for="Maluc">Horsepower:</label>
-      <input type="text" id="Maluc" name="Maluc" ngModel required>
-  
-      <label for="PhanKhuc">Segment:</label>
-      <input type="text" id="PhanKhuc" name="PhanKhuc" ngModel required>
-  
-      <label for="VongTuaMay">RPM Range:</label>
-      <input type="text" id="VongTuaMay" name="VongTuaMay" ngModel required>
-  
-      <label for="MoMenXoan">Torque Curve:</label>
-      <input type="text" id="MoMenXoan" name="MoMenXoan" ngModel required>
-  
-      <label for="Giakhuyenmai">Discounted Price:</label>
-      <input type="number" id="Giakhuyenmai" name="Giakhuyenmai" ngModel required>
-  
+      <input type="number" id="Gia" name="Gia" ngModel class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label for="Maluc">Maluc:</label>
+      <input type="text" id="Maluc" name="Maluc" ngModel class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label for="PhanKhuc">PhanKhuc:</label>
+      <input type="text" id="PhanKhuc" name="PhanKhuc" ngModel class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label for="VongTuaMay">VongTuaMay:</label>
+      <input type="text" id="VongTuaMay" name="VongTuaMay" ngModel class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label for="MoMenXoan">MoMenXoan:</label>
+      <input type="text" id="MoMenXoan" name="MoMenXoan" ngModel class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label for="Giakhuyenmai">Giakhuyenmai:</label>
+      <input type="number" id="Giakhuyenmai" name="Giakhuyenmai" ngModel class="form-control" required>
+    </div>
+
+    <div class="form-group">
       <label for="ViewCount">View Count:</label>
-      <input type="number" id="ViewCount" name="ViewCount" ngModel required>
-  
+      <input type="number" id="ViewCount" name="ViewCount" ngModel class="form-control" required>
+    </div>
+
+    <div class="form-group">
       <label for="ReducePrice">Reduced Price:</label>
-      <input type="number" id="ReducePrice" name="ReducePrice" ngModel required>
-  
-      <button type="submit">Add Item</button>
-    </form>
-  </div>
+      <input type="number" id="ReducePrice" name="ReducePrice" ngModel class="form-control" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Item</button>
+  </form>
+</div>

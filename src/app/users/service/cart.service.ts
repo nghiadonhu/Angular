@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
+  
   cartItemsSubject: BehaviorSubject<any[]>;
 
-  constructor() {
+  constructor(private snackBar: MatSnackBar) {
     const storedCart = localStorage.getItem('cart');
     this.cartItemsSubject = new BehaviorSubject<any[]>(JSON.parse(storedCart || '[]'));
   }
+  
 
   addToCart(item: any): void {
     const currentItems = this.cartItemsSubject.value;
@@ -20,16 +22,31 @@ export class CartService {
       // Sản phẩm đã tồn tại trong giỏ, cộng thêm 1 vào số lượng
       existingItem.quantity += 1;
       existingItem.totalPrice = existingItem.Gia * existingItem.quantity;
+      this.showSuccessNotification('Sản phẩm đã được thêm vào giỏ hàng');
     } else {
       // Sản phẩm chưa có trong giỏ, thêm mới vào giỏ
       const updatedItems = [...currentItems, { ...item, quantity: 1, totalPrice: item.Gia }];
+      
       this.cartItemsSubject.next(updatedItems);
+      this.showSuccessNotification('Sản phẩm đã được thêm vào giỏ hàng');
     }
   
     // Cập nhật giỏ hàng
     this.updateCart();
   }
   
+
+
+  showSuccessNotification(message: string): void {
+    // Ở đây, bạn có thể sử dụng một thư viện thông báo hoặc hiển thị thông báo theo cách bạn muốn
+    // Ví dụ sử dụng Angular Material Snackbar:
+    this.snackBar.open(message, 'Đóng', {
+      duration: 2000, // Thời gian hiển thị thông báo
+      verticalPosition: 'top', // Vị trí của thông báo
+    });
+  }
+
+
 
   getCartItems(): Observable<any[]> {
     return this.cartItemsSubject.asObservable();
