@@ -1,0 +1,57 @@
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Quản lý khách hàng</h6>
+    </div>
+
+    <div class="card-body">
+      <a class="btn btn-dark fa fa-plus" [routerLink]="['/admin/adddatakh']">Thêm</a>
+      <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th>STT</th>
+              <th>Tên khách hàng</th>
+              <th>Ngày sinh</th>
+              <th>Sđt</th>
+              <th>Địa chỉ</th>
+              <th>Email</th>
+              <th></th>
+              <!-- var Tenkhachhang = req.body.Tenkhachhang;
+              var Anhdaidien = req.body.Anhdaidien;
+              var Ngaysinh = req.body.Ngaysinh;
+              var Sdt = req.body.Sdt;
+              var Diachi = req.body.Diachi;
+              var Email = req.body.Email; -->
+            </tr>
+          </thead>
+          
+          <tbody>
+            
+            <tr *ngFor="let item of subjects | paginate: { itemsPerPage: 7, currentPage: p };let i = index ">
+              <td>{{i}}</td>
+              <td>{{item.Tenkhachhang}}</td>
+              <td>{{item.Ngaysinh}}</td>
+              <td>{{item.Sdt}}</td>
+              <td>{{item.Diachi}}</td>
+              <td>{{item.Email}}</td>
+
+
+              <td>
+                <div style="padding-left:10px ;">
+                <a style="margin-left: 3px;" (click)="editItem(item.id,item.Tenkhachhang,item.Ngaysinh,item.Sdt,item.Diachi,item.Email)" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></a>
+                <a style="margin-left: 3px;" (click)="editItem(item.id,item.Tenkhachhang,item.Ngaysinh,item.Sdt,item.Diachi,item.Email)"class="btn btn-info fa fa-eye"></a>
+                <a style="margin-left: 3px;" (click)="removeItem(item.id)" class="btn btn-danger "> <i class="fa fa-trash"></i></a>
+              </div>
+                 
+              
+              </td>
+
+
+          </tbody>
+         
+        </table>
+        <pagination-controls style="text-align: center;" (pageChange)="p = $event"></pagination-controls>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,32 @@
+<!-- Add Bootstrap classes to your HTML elements -->
+<div class="container">
+    <h2>Add New Item</h2>
+  
+    <form #addItemForm="ngForm" (ngSubmit)="addNewItem(addItemForm.value)" class="needs-validation" novalidate>
+      
+  
+      <div class="form-group">
+        <label for="Tenncc">Tên nhà cung cấp:</label>
+        <input type="text" id="Tenncc" name="Tenncc" ngModel class="form-control" required>
+      </div>
+  
+  
+    
+  
+      <div class="form-group">
+        <label for="Diachi">Diachi:</label>
+        <input type="text" id="Diachi" name="Diachi" ngModel class="form-control" required>
+      </div>
+  
+    
+  
+      <div class="form-group">
+        <label for="Sdt">Sdt:</label>
+        <input type="number" id="Sdt" name="Sdt" ngModel class="form-control" required>
+      </div>
+  
+  
+      <button type="submit" class="btn btn-primary">Add Item</button>
+    </form>
+  </div>
+  

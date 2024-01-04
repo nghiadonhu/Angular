@@ -90,7 +90,10 @@ removeFromCart(index: number): void {
     // Update LocalStorage
     localStorage.removeItem('cart');
   }
-  
+  getTotalQuantity(): number {
+    const currentItems = this.cartItemsSubject.value;
+    return currentItems.reduce((total, item) => total + item.quantity, 0);
+  }
   
   
 

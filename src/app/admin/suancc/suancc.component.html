@@ -1,0 +1,76 @@
+<!-- <h2>Edit Item</h2>
+
+<form #editItemFormsp="ngForm" (ngSubmit)="editItemsp(editItemFormsp.value.id, editItemFormsp.value.Maloai_id, editItemFormsp.value.Tensanpham, editItemFormsp.value.Anh, editItemFormsp.value.Soluong, editItemFormsp.value.Gia, editItemFormsp.value.Maluc, editItemFormsp.value.PhanKhuc, editItemFormsp.value.VongTuaMay, editItemFormsp.value.MoMenXoan,editItemFormsp.value.Giakhuyenmai, editItemFormsp.value.ViewCount, editItemFormsp.value.ReducePrice)">
+  <label for="id">Item ID:</label>
+  <input type="number" id="id" name="id" [(ngModel)]="category.id" required>
+               
+  <label for="Maloai_id">Category:</label>
+      <select id="Maloai_id" name="Maloai_id" [(ngModel)]="selectedMaloai_id" required>
+        <option *ngFor="let subject of subjects" [value]="subject.id">{{ subject.Tenloai }}</option>
+      </select>
+
+ 
+
+  <label for="Tensanpham">Product Name:</label>
+  <input type="text" id="Tensanpham" name="Tensanpham" [(ngModel)]="category.Tensanpham" required>
+
+  <label for="Anh">Image URL:</label>
+  <input type="text" id="Anh" name="Anh" [(ngModel)]="category.Anh" required>
+
+  <label for="Soluong">Quantity:</label>
+  <input type="number" id="Soluong" name="Soluong" [(ngModel)]="category.Soluong" required>
+
+  <label for="Gia">Giá:</label>
+  <input type="number" id="Gia" name="Gia" [(ngModel)]="category.Gia" required>
+
+  <label for="Maluc">Maluc:</label>
+  <input type="text" id="Maluc" name="Maluc" [(ngModel)]="category.Maluc" required>
+
+  <label for="PhanKhuc">PhanKhuc:</label>
+  <input type="text" id="PhanKhuc" name="PhanKhuc" [(ngModel)]="category.PhanKhuc" required>
+
+  <label for="VongTuaMay">VongTuaMay:</label>
+  <input type="text" id="VongTuaMay" name="VongTuaMay" [(ngModel)]="category.VongTuaMay" required>
+
+  <label for="MoMenXoan">MoMenXoan:</label>
+  <input type="text" id="MoMenXoan" name="MoMenXoan" [(ngModel)]="category.MoMenXoan" required>
+
+  <label for="Giakhuyenmai">Giakhuyenmai:</label>
+  <input type="text" id="Giakhuyenmai" name="Giakhuyenmai" [(ngModel)]="category.Giakhuyenmai" required>
+
+  <label for="ViewCount">ViewCount:</label>
+  <input type="text" id="ViewCount" name="ViewCount" [(ngModel)]="category.ViewCount" required>
+
+  <label for="ReducePrice">ReducePrice:</label>
+  <input type="text" id="ReducePrice" name="ReducePrice" [(ngModel)]="category.ReducePrice" required>
+
+
+ 
+
+  <button type="submit">Edit Item</button>
+</form> -->
+
+<div class="container">
+    <h2>Edit Item</h2>
+  
+    <form #editItemFormsp="ngForm" (ngSubmit)="editItem(editItemFormsp.value.id, editItemFormsp.value.Tenncc, editItemFormsp.value.Diachi, editItemFormsp.value.Sdt)" class="needs-validation" novalidate>
+      <div class="form-group">
+        <label for="id">Item ID:</label>
+        <input type="number" id="id" name="id" [(ngModel)]="category.id" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="Tenncc">Tên nhà cung cấp:</label>
+        <input type="text" id="Tenncc" name="Tenncc" [(ngModel)]="category.Tenncc" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="Diachi">Diachi:</label>
+        <input type="text" id="Diachi" name="Diachi" [(ngModel)]="category.Diachi" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="Sdt">Sdt:</label>
+        <input type="text" id="Sdt" name="Sdt" [(ngModel)]="category.Sdt" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Edit Item</button>
+    </form>
+  </div>
+  

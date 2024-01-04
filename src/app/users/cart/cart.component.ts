@@ -30,13 +30,27 @@ export class CartComponent implements OnInit {
   }
 
   removeFromCart(index: number): void {
-    this.cartService.removeFromCart(index);
-    this.updateTotal();
+    // Hiển thị cửa sổ xác nhận
+    const isConfirmed = window.confirm('Bạn có chắc chắn muốn xóa mục này khỏi giỏ hàng không?');
+  
+    // Nếu người dùng xác nhận xóa
+    if (isConfirmed) {
+      this.cartService.removeFromCart(index);
+      this.updateTotal();
+    }
   }
 
   clearCart(): void {
-    this.cartService.clearCart();
+    // Hiển thị cửa sổ xác nhận
+    const isConfirmed = window.confirm('Bạn có chắc chắn muốn xóa toàn bộ giỏ hàng không?');
+  
+    // Nếu người dùng xác nhận xóa
+    if (isConfirmed) {
+      this.cartService.clearCart();
+      this.updateTotal();
+    }
   }
+  
 
   private updateTotal(): void {
     this.total = this.cartService.getTotalPrice();

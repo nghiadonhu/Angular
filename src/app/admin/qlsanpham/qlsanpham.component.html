@@ -73,7 +73,10 @@
 
       <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          
           <thead>
+            
+           
             <tr>
               <th>STT</th>
               <th>Maloai_id</th>
@@ -95,7 +98,8 @@
           </thead>
 
           <tbody>
-            <tr *ngFor="let item of subjects;let i = index">
+            
+            <tr *ngFor="let item of subjects | paginate: { itemsPerPage: 7, currentPage: p };let i = index ">
               <td>{{i}}</td>
               <td>{{item.Maloai_id}}</td>
               <td>{{item.Tensanpham}}</td>
@@ -106,27 +110,32 @@
               </td>
 
               <td>{{item.Soluong}}</td>
-              <td>{{item.Gia}}</td>
+              <td>{{formatCurrency(item.Gia)}}đ</td>
               <td>{{item.Maluc}}</td>
               <td>{{item.PhanKhuc}}</td>
               <td>{{item.VongTuaMay}}</td>
               <td>{{item.MoMenXoan}}</td>
-              <td>{{item.Giakhuyenmai}}</td>
+              <td>{{formatCurrency(item.Giakhuyenmai)}}đ</td>
               <td>{{item.ViewCount}}</td>
               <td>{{item.ReducePrice}}</td>
 
 
 
               <td>
-                <a (click)="editItemsp(item.id,item.Maloai_id,item.Tensanpham,item.Anh,item.Soluong,item.Gia,item.Maluc,item.PhanKhuc,item.VongTuaMay,item.MoMenXoan,item.Giakhuyenmai,item.ViewCount,item.ReducePrice)" class="btn btn-warning fa fa-pencil">Sửa</a>
-                <a (click)="editItemsp(item.id,item.Maloai_id,item.Tensanpham,item.Anh,item.Soluong,item.Gia,item.Maluc,item.PhanKhuc,item.VongTuaMay,item.MoMenXoan,item.Giakhuyenmai,item.ViewCount,item.ReducePrice)"class="btn btn-info fa fa-eye"></a>
-                <a (click)="removeItemsp(item.id)" class="btn btn-danger fa fa-trash">Xóa</a>
-
+                <div style="padding-left:10px ;">
+                <a style="margin-left: 3px;" (click)="editItemsp(item.id,item.Maloai_id,item.Tensanpham,item.Anh,item.Soluong,item.Gia,item.Maluc,item.PhanKhuc,item.VongTuaMay,item.MoMenXoan,item.Giakhuyenmai,item.ViewCount,item.ReducePrice)" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></a>
+                <a style="margin-left: 3px;" (click)="editItemsp(item.id,item.Maloai_id,item.Tensanpham,item.Anh,item.Soluong,item.Gia,item.Maluc,item.PhanKhuc,item.VongTuaMay,item.MoMenXoan,item.Giakhuyenmai,item.ViewCount,item.ReducePrice)"class="btn btn-info fa fa-eye"></a>
+                <a style="margin-left: 3px;" (click)="removeItemsp(item.id)" class="btn btn-danger "> <i class="fa fa-trash"></i></a>
+              </div>
+                 
+              
               </td>
 
 
           </tbody>
+         
         </table>
+        <pagination-controls style="text-align: center;" (pageChange)="p = $event"></pagination-controls>
       </div>
     </div>
   </div>

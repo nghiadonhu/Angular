@@ -1,0 +1,33 @@
+
+<div class="container">
+    <h2>Edit Item</h2>
+  
+    <form #editItemFormsp="ngForm" (ngSubmit)="editItem(editItemFormsp.value.id, editItemFormsp.value.Tennhanvien,editItemFormsp.value.Ngaysinh,editItemFormsp.value.Sdt, editItemFormsp.value.Diachi, editItemFormsp.value.Email)" class="needs-validation" novalidate>
+      <div class="form-group">
+        <label for="id">Item ID:</label>
+        <input type="number" id="id" name="id" [(ngModel)]="category.id" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="Tennhanvien">Tên nhân viên:</label>
+        <input type="text" id="Tennhanvien" name="Tennhanvien" [(ngModel)]="category.Tennhanvien" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="Ngaysinh">Ngaysinh:</label>
+        <input type="text" id="Ngaysinh" name="Ngaysinh" [(ngModel)]="category.Ngaysinh" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="Sdt">Sdt:</label>
+        <input type="text" id="Sdt" name="Sdt" [(ngModel)]="category.Sdt" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="Diachi">Diachi:</label>
+        <input type="text" id="Diachi" name="Diachi" [(ngModel)]="category.Diachi" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="Sdt">Email:</label>
+        <input type="text" id="Email" name="Email" [(ngModel)]="category.Email" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Edit Item</button>
+    </form>
+  </div>
+  

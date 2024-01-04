@@ -13,7 +13,15 @@ import { AddcthdnComponent } from './addcthdn/addcthdn.component';
 import { QlhdnComponent } from './qlhdn/qlhdn.component';
 import { AddhdnComponent } from './addhdn/addhdn.component';
 import { SuahdnComponent } from './suahdn/suahdn.component';
-
+import { QlnccComponent } from './qlncc/qlncc.component';
+import { AdddatanccComponent } from './adddatancc/adddatancc.component';
+import { SuanccComponent } from './suancc/suancc.component';
+import { QlnhanvienComponent } from './qlnhanvien/qlnhanvien.component';
+import { AdddatanvComponent } from './adddatanv/adddatanv.component';
+import { SuanvComponent } from './suanv/suanv.component';
+import { QlkhComponent } from './qlkh/qlkh.component';
+import { AdddatakhComponent } from './adddatakh/adddatakh.component';
+import { SuakhComponent } from './suakh/suakh.component';
 
 const routes: Routes = [
 
@@ -22,14 +30,36 @@ const routes: Routes = [
     path:'sanpham',
     component:QlsanphamComponent
   },
+  {
+    path:'ncc',
+    component:QlnccComponent
+  },
+  {
+    path:'khachhang',
+    component:QlkhComponent
+  },
+
+  {
+    path:'nv',
+    component:QlnhanvienComponent
+  },
 
   {
     path:'data1',
     component:Datap1Component
   },
+
+  {
+    path:'adddatanv',
+    component:AdddatanvComponent
+  },
   {
     path:'adddata',
     component:AdddataComponent
+  },
+  {
+    path:'adddatakh',
+    component:AdddatakhComponent
   },
   {
     path:'adddatasp',
@@ -39,6 +69,10 @@ const routes: Routes = [
   {
     path:'adddatacthdn',
     component:AddcthdnComponent
+  },
+  {
+    path:'adddatancc',
+    component:AdddatanccComponent
   },
 
   {
@@ -54,11 +88,24 @@ const routes: Routes = [
   //   path:'editdata/:id',
   //   component:Datap1Component
   // },
- 
+  {
+    path:'editdatancc/:id',
+    component:SuanccComponent
+  },
   
   {
     path:'editdata/:id',
     component:NewComponent
+  },
+
+  {
+    path:'editdatakh/:id',
+    component:SuakhComponent
+  },
+
+  {
+    path:'editdatanv/:id',
+    component:SuanvComponent
   },
   {
     path:'editdatasp/:id',

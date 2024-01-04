@@ -2,7 +2,7 @@
 <!-- *ngFor="let product of product" -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">Quản lý sản phẩm</h6>
+      <h6 class="m-0 font-weight-bold text-primary">Quản lý chi tiết đơn hàng</h6>
     </div>
 
     <div class="card-body">
@@ -32,7 +32,7 @@
           </thead>
 
           <tbody>
-            <tr *ngFor="let item of product;let i = index">
+            <tr *ngFor="let item of product| paginate: { itemsPerPage: 7, currentPage: p };let i = index">
               <td>{{i}}</td>
               <!-- <td>{{item.Khachhang_id}}</td> -->
               <td>{{item.Donhang_id}}</td>
@@ -40,10 +40,14 @@
 
               <td>{{item.Sanpham_id}}</td>
               <td>{{item.Tensanpham}}</td>
-              <td>{{item.Anh}}</td>
+              <td>
+                <img src="../assets/img/{{item.Anh}}" alt="" style="width: 100px; height: auto;">
+             
+
+              </td>
               <td>{{item.Soluong}}</td>
-              <td>{{item.Gia}}</td>
-              <td>{{item.Tongtien}}</td>
+              <td>{{formatCurrency(item.Gia)}}đ</td>
+              <td>{{formatCurrency(item.Tongtien)}}đ</td>
             
 
 
@@ -53,6 +57,7 @@
 
           </tbody>
         </table>
+        <pagination-controls style="text-align: center;" (pageChange)="p = $event"></pagination-controls>
       </div>
     </div>
   </div>

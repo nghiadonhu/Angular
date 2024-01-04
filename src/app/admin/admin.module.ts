@@ -23,7 +23,16 @@ import { QlcthdnComponent } from './qlcthdn/qlcthdn.component';
 import { AddcthdnComponent } from './addcthdn/addcthdn.component';
 import { AddhdnComponent } from './addhdn/addhdn.component';
 import { SuahdnComponent } from './suahdn/suahdn.component';
-
+import { NgxPaginationModule } from 'ngx-pagination';
+import { QlnccComponent } from './qlncc/qlncc.component';
+import { AdddatanccComponent } from './adddatancc/adddatancc.component';
+import { SuanccComponent } from './suancc/suancc.component';
+import { QlnhanvienComponent } from './qlnhanvien/qlnhanvien.component';
+import { SuanvComponent } from './suanv/suanv.component';
+import { AdddatanvComponent } from './adddatanv/adddatanv.component';
+import { QlkhComponent } from './qlkh/qlkh.component';
+import { SuakhComponent } from './suakh/suakh.component';
+import { AdddatakhComponent } from './adddatakh/adddatakh.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +51,16 @@ import { SuahdnComponent } from './suahdn/suahdn.component';
     QlcthdnComponent,
     AddcthdnComponent,
     AddhdnComponent,
-    SuahdnComponent
+    SuahdnComponent,
+    QlnccComponent,
+    AdddatanccComponent,
+    SuanccComponent,
+    QlnhanvienComponent,
+    SuanvComponent,
+    AdddatanvComponent,
+    QlkhComponent,
+    SuakhComponent,
+    AdddatakhComponent
    
    
   ],
@@ -51,6 +69,8 @@ import { SuahdnComponent } from './suahdn/suahdn.component';
     AdminRoutingModule,
     FormsModule,
     HttpClientModule,
+    NgxPaginationModule,
+   
   ],
   providers: [
 

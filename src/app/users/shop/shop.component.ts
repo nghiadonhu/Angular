@@ -37,6 +37,11 @@ ngOnInit(): void {
   
 }
 
+redirectToDetailPage(item: any): void {
+  // Navigate to the detail page with the product ID
+  this.router.navigate(['/users/chitiet', item.id]);
+}
+
 formatCurrency(price: number | null): string {
   if (price === null) {
     return 'N/A'; // hoặc giá trị mặc định khác tùy thuộc vào yêu cầu của bạn

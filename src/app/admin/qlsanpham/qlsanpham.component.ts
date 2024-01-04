@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from '../service/home.service';
 import { Router } from '@angular/router';
-
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-qlsanpham',
@@ -18,8 +18,9 @@ import { Router } from '@angular/router';
   ]
 })
 export class QlsanphamComponent {
-  constructor(private api : HomeService, private router: Router) {}
-  
+  constructor(private api : HomeService, private router: Router,private decimalPipe: DecimalPipe) {}
+ 
+  p: number = 1;
   subjects: any;
   selectedItem: any | null = null;
   selectedMaloai_id: any;
@@ -30,23 +31,26 @@ ngOnInit(): void {
     console.log(this.subjects);
   })
 }
-
-
-
 removeItemsp(id: number): void {
-  this.api.removeItemsp(id).subscribe(res => {
-    console.log('Item removed successfully', res);
-    this.refreshList();
-    // this.api.getList().subscribe(list => {
-    //   this.subjects = list;
-    //   console.log(this.subjects);
+  // Hiển thị cửa sổ xác nhận
+  const isConfirmed = window.confirm('Bạn có chắc chắn muốn xóa không?');
 
-    // },
-    
-
-    //)
-  }) 
+  // Nếu người dùng xác nhận xóa
+  if (isConfirmed) {
+    this.api.removeItemsp(id).subscribe(res => {
+      console.log('Item removed successfully', res);
+      this.refreshList();
+    });
+  }
 }
+
+
+// removeItemsp(id: number): void {
+//   this.api.removeItemsp(id).subscribe(res => {
+//     console.log('Item removed successfully', res);
+//     this.refreshList();
+//   }) 
+// }
 
 
 
@@ -114,6 +118,19 @@ addNewItem(itemData: any): void {
   );
 }
 
+formatCurrency(price: number | null): string {
+  if (price === null) {
+    return 'N/A'; // hoặc giá trị mặc định khác tùy thuộc vào yêu cầu của bạn
+  }
+
+  // Nhân price với 1000
+  const multipliedPrice = price * 1000;
+
+  // Định dạng giá trị nhân với 1000
+  const formattedPrice = this.decimalPipe.transform(multipliedPrice, '1.0-0');
+
+  return formattedPrice ? formattedPrice.replace(/,/g, '.') : '';
+}
 
 private refreshList(): void {
   this.api.getListsp().subscribe(list => {

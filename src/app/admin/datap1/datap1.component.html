@@ -135,7 +135,7 @@
                                     </thead>
                                     
                                     <tbody>
-                                        <tr *ngFor="let item of subjects;let i = index">
+                                        <tr *ngFor="let item of subjects| paginate: { itemsPerPage: 7, currentPage: p };let i = index">
                                             
                                             <td>{{ i }}</td>
                                             <td>{{ item.id }}</td>
@@ -152,15 +152,20 @@
                                               <button class ="btn btn-info fa fa-eye" (click)="editItem(item.id, item.Tenloai)">Xem</button>
                                             </td> -->
                                             <td>
-                                              <a (click)="editItem(item.id, item.Tenloai)" class="btn btn-warning fa fa-pencil">Sửa</a>
-                                              <a (click)="editItem(item.id, item.Tenloai)" class ="btn btn-info fa fa-eye"></a>
-                                              <a (click)="removeItem(item.id)" class="btn btn-danger fa fa-trash">Xóa</a>
+
+                                              <div style="padding-left:10px ;">
+                                                <a style="margin-left: 3px;" (click)="editItem(item.id, item.Tenloai)" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></a>
+                                                <a style="margin-left: 3px;" (click)="editItem(item.id, item.Tenloai)"class="btn btn-info fa fa-eye"></a>
+                                                <a style="margin-left: 3px;" (click)="removeItem(item.id)" class="btn btn-danger "> <i class="fa fa-trash"></i></a>
+                                              </div>
+                                            
                                               
                                           </td>
                                     
                                     
                                     </tbody>
                                 </table>
+                                <pagination-controls style="text-align: center;" (pageChange)="p = $event"></pagination-controls>
                             </div>
                         </div>
                     </div>

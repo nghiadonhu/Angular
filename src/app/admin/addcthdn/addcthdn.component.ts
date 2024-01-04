@@ -33,7 +33,7 @@ export class AddcthdnComponent {
     this.api.addItemcthdn(itemData).subscribe(
       result => {
         console.log('Item added successfully', result);
-       
+        this.router.navigate(['/admin/hoadonnhap']);
         this.refreshList();
        
       }

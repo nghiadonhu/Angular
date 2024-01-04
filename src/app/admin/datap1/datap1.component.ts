@@ -19,7 +19,7 @@ export class Datap1Component implements OnInit{
   constructor(private api : HomeService, private router: Router) {}
     subjects: any;
     selectedItem: any | null = null;
-  
+    p: number = 1;
   ngOnInit(): void {
         
     this.api.getList().subscribe(res => {
@@ -28,22 +28,27 @@ export class Datap1Component implements OnInit{
     })
   }
 
+  removeItem(id: number): void {
+    // Hiển thị cửa sổ xác nhận
+    const isConfirmed = window.confirm('Bạn có chắc chắn muốn xóa không?');
+  
+    // Nếu người dùng xác nhận xóa
+    if (isConfirmed) {
+      this.api.removeItem(id).subscribe(res => {
+        console.log('Item removed successfully', res);
+        this.refreshList();
+      });
+    }
+  }
   
 
-  removeItem(id: number): void {
-    this.api.removeItem(id).subscribe(res => {
-      console.log('Item removed successfully', res);
-      this.refreshList();
-      // this.api.getList().subscribe(list => {
-      //   this.subjects = list;
-      //   console.log(this.subjects);
-
-      // },
-      
-
-      //)
-    }) 
-  }
+  // removeItem(id: number): void {
+  //   this.api.removeItem(id).subscribe(res => {
+  //     console.log('Item removed successfully', res);
+  //     this.refreshList();
+    
+  //   }) 
+  // }
 
   editItem(id: number, Tenloai: string): void {
     this.router.navigate(['/admin/editdata', id]);

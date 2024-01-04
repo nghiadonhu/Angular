@@ -71,9 +71,15 @@
       <input type="text" id="Tensanpham" name="Tensanpham" [(ngModel)]="category.Tensanpham" class="form-control" required>
     </div>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
       <label for="Anh">Image URL:</label>
       <input type="text" id="Anh" name="Anh" [(ngModel)]="category.Anh" class="form-control" required>
+    </div> -->
+
+    <div class="form-group">
+      <label for="Anh">Image URL:</label>
+      <!-- <input type="text" id="Anh" name="Anh" ngModel class="form-control" required> -->
+      <input type="file" ngModel (change)="onFileSelected($event)" />
     </div>
 
     <div class="form-group">

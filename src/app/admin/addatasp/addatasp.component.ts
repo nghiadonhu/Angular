@@ -33,7 +33,7 @@ export class AddataspComponent {
     this.api.addItemsp(itemData).subscribe(
       result => {
         console.log('Item added successfully', result);
-       
+        this.router.navigate(['/admin/sanpham']);
         this.refreshList();
        
       }

@@ -22,6 +22,7 @@ export class QlhdnComponent {
   selectedItem: any | null = null;
   selectedNhanvien_id: any;
   selectedNcc_id: any;
+  p: number = 1;
 ngOnInit(): void {
       
   this.api.getListhdn().subscribe(res => {
@@ -30,22 +31,25 @@ ngOnInit(): void {
   })
 }
 
-
-
 removeItemhdn(id: number): void {
-  this.api.removeItemhdn(id).subscribe(res => {
-    console.log('Item removed successfully', res);
-    this.refreshList();
-    // this.api.getList().subscribe(list => {
-    //   this.subjects = list;
-    //   console.log(this.subjects);
+  // Hiển thị cửa sổ xác nhận
+  const isConfirmed = window.confirm('Bạn có chắc chắn muốn xóa không?');
 
-    // },
-    
-
-    //)
-  }) 
+  // Nếu người dùng xác nhận xóa
+  if (isConfirmed) {
+    this.api.removeItemhdn(id).subscribe(res => {
+      console.log('Item removed successfully', res);
+      this.refreshList();
+    });
+  }
 }
+
+// removeItemhdn(id: number): void {
+//   this.api.removeItemhdn(id).subscribe(res => {
+//     console.log('Item removed successfully', res);
+//     this.refreshList();
+//   }) 
+// }
 
 
 

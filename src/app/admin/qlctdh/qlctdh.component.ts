@@ -18,6 +18,7 @@ import { HomeService } from '../service/home.service';
 export class QlctdhComponent implements OnInit {
   product: any;
   productId: any;
+  p: number = 1;
   constructor(private activatedRoute: ActivatedRoute,private router: Router,private decimalPipe: DecimalPipe,private route: ActivatedRoute, private homeService: HomeService) {
     //Lấy thông tin sản phẩm từ trạng thái router
     // const navigation = this.router.getCurrentNavigation();

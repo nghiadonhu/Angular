@@ -36,7 +36,7 @@ export class AddhdnComponent {
     this.api.addItemhdn(itemData).subscribe(
       result => {
         console.log('Item added successfully', result);
-       
+        this.router.navigate(['/admin/hoadonnhap']);
         this.refreshList();
        
       }

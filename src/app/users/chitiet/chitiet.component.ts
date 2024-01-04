@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Router  } from '@angular/router';
 import { DecimalPipe } from '@angular/common';
 import { HomeService } from '../service/home.service';
+import { CartService } from '../service/cart.service';
 @Component({
   selector: 'app-chitiet',
   templateUrl: './chitiet.component.html',
@@ -16,7 +17,7 @@ import { HomeService } from '../service/home.service';
 export class ChitietComponent implements OnInit  {
   product: any;
   productId: any;
-  constructor(private activatedRoute: ActivatedRoute,private router: Router,private decimalPipe: DecimalPipe,private route: ActivatedRoute, private homeService: HomeService) {
+  constructor(private activatedRoute: ActivatedRoute,private router: Router,private cartService: CartService,private decimalPipe: DecimalPipe,private route: ActivatedRoute, private homeService: HomeService) {
     //Lấy thông tin sản phẩm từ trạng thái router
     // const navigation = this.router.getCurrentNavigation();
     
@@ -41,6 +42,13 @@ console.log(this.productId)
       );
     });
   }
+
+  addToCart(item: any): void {
+    console.log('Adding to cart:', item);
+    this.cartService.addToCart(item);
+   
+  }
+  
 
   formatCurrency(price: number | null): string {
     if (price === null) {

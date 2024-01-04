@@ -53,8 +53,20 @@ export class HomeService {
     getListsp() : Observable<any[]> {
       return this.http.get<any>('http://localhost:3000/sp');
     }
+    getListkh() : Observable<any[]> {
+      return this.http.get<any>('http://localhost:3000/kh');
+    }
     addItemsp(newItem: any): Observable<any> {
       const url = 'http://localhost:3000/sanpham/add';
+      return this.http.post<any>(url, newItem);
+    }
+
+    addItemkh(newItem: any): Observable<any> {
+      const url = 'http://localhost:3000/khachhang/add';
+      return this.http.post<any>(url, newItem);
+    }
+    addItemncc(newItem: any): Observable<any> {
+      const url = 'http://localhost:3000/ncc/add';
       return this.http.post<any>(url, newItem);
     }
 
@@ -67,6 +79,11 @@ export class HomeService {
       const url = 'http://localhost:3000/hoadonnhap/add';
       return this.http.post<any>(url, newItem);
     }
+
+    addItemnv(newItem: any): Observable<any> {
+      const url = 'http://localhost:3000/nhanvien/add';
+      return this.http.post<any>(url, newItem);
+    }
     
     removeItem(id: number): Observable<any> {
       const url = `http://localhost:3000/remove/${id}`;
@@ -77,9 +94,26 @@ export class HomeService {
       const url = `http://localhost:3000/sanpham/remove/${id}`;
       return this.http.get<any>(url);     
     }  
+    removeItemncc(id: number): Observable<any> {
+      const url = `http://localhost:3000/ncc/remove/${id}`;
+      return this.http.get<any>(url);     
+    } 
+    removeItemnv(id: number): Observable<any> {
+      const url = `http://localhost:3000/nhanvien/remove/${id}`;
+      return this.http.get<any>(url);     
+    } 
 
+    removeItemkh(id: number): Observable<any> {
+      const url = `http://localhost:3000/khachhang/remove/${id}`;
+      return this.http.get<any>(url);     
+    } 
     removeItemhdn(id: number): Observable<any> {
       const url = `http://localhost:3000/hoadonnhap/remove/${id}`;
+      return this.http.get<any>(url);     
+    }
+
+    removeItemdh(id: number): Observable<any> {
+      const url = `http://localhost:3000/donhang/remove/${id}`;
       return this.http.get<any>(url);     
     }
     addItem(Tenloai: string): Observable<any> {
@@ -129,6 +163,70 @@ export class HomeService {
       return this.http.post<any>(url, body);
     }
 
+    editItemnv(id: number,
+      Tennhanvien: any,
+      Ngaysinh: any,
+      Sdt: any,
+      Diachi: any,
+      Email: any,
+      // Anh: any,
+      ): Observable<any> {
+      const url = `http://localhost:3000/nhanvien/edit/${id}`;
+      const body = {
+        Tennhanvien: Tennhanvien,
+        Ngaysinh: Ngaysinh,
+        Sdt: Sdt,
+        Diachi: Diachi,
+        Email: Email,
+        // Anh: Anh,
+      };
+    
+      return this.http.post<any>(url, body);
+    }
+
+    editItemncc(id: number,
+      Tenncc: any,
+      Diachi: any,
+      Sdt: any,
+      
+      ): Observable<any> {
+      const url = `http://localhost:3000/ncc/edit/${id}`;
+      const body = {
+        Tenncc: Tenncc,
+        Diachi: Diachi,
+        Sdt: Sdt
+       
+      };
+    
+      return this.http.post<any>(url, body);
+    }
+
+    editItemkh(id: number,
+      Tenkhachhang: any,
+      // Anhdaidien: any,
+      Ngaysinh: any,
+      Sdt: any,
+      Diachi: any,
+      Email: any,
+     
+      
+      
+      ): Observable<any> {
+      const url = `http://localhost:3000/khachhang/edit/${id}`;
+      const body = {
+        Tenkhachhang: Tenkhachhang,
+        // Anhdaidien: Anhdaidien,
+        Ngaysinh: Ngaysinh,
+        Sdt: Sdt,
+        Diachi: Diachi,
+        Email: Email
+     
+       
+      };
+    
+      return this.http.post<any>(url, body);
+    }
+
     getItemById(id: any): Observable<any> {
       const url = `http://localhost:3000/get-one/${id}`;
       return this.http.get<any>(url);
@@ -139,6 +237,20 @@ export class HomeService {
       return this.http.get<any>(url);
     }
 
+    getItemByIdncc(id: any): Observable<any> {
+      const url = `http://localhost:3000/ncc/get-one/${id}`;
+      return this.http.get<any>(url);
+    }
+
+    getItemByIdnv(id: any): Observable<any> {
+      const url = `http://localhost:3000/nhanvien/get-one/${id}`;
+      return this.http.get<any>(url);
+    }
+
+    getItemByIdkh(id: any): Observable<any> {
+      const url = `http://localhost:3000/khachhang/get-one/${id}`;
+      return this.http.get<any>(url);
+    }
     getItemByIdhdn(id: any): Observable<any> {
       const url = `http://localhost:3000/hoadonnhap/get-one/${id}`;
       return this.http.get<any>(url);

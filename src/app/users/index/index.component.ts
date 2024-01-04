@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 import { CartService } from '../service/cart.service';
 import { CurrencyPipe } from '@angular/common';
 import { DecimalPipe } from '@angular/common';
-
+// import "primeng/resources/themes/lara-light-blue/theme.css";
+// import "primeng/resources/primeng.css";
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
@@ -14,14 +15,17 @@ import { DecimalPipe } from '@angular/common';
     "../../../assets/user/css/core-style.css",
     "../../../assets/user/css/style.css",
     "../../../assets/user/css/responsive.css"
-
+    // "../../node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+    // "../../node_modules/primeng/resources/primeng.min.css",
   ]
 })
 
 export class IndexComponent implements OnInit {
   constructor(private api : HomeService, private router: Router,private cartService: CartService,private currencyPipe: CurrencyPipe,private decimalPipe: DecimalPipe) {}
   subjects: any;
-  
+  // subjects: any= []; 
+  p: number = 1;
+ 
   selectedItem: any | null = null;
   currentPage: number = 1;
   reloadPage(): void {

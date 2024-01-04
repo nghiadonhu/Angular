@@ -4,6 +4,7 @@ import { HomeService } from '../service/home.service';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DecimalPipe } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -18,7 +19,7 @@ export class CheckoutComponent implements OnInit {
   cartItems: any[] = [];
   total: number = 0;
 
-  constructor(private cartService: CartService, private homeService: HomeService, private formBuilder: FormBuilder,private router: Router,private decimalPipe: DecimalPipe) {}
+  constructor(private cartService: CartService,private snackBar: MatSnackBar, private homeService: HomeService, private formBuilder: FormBuilder,private router: Router,private decimalPipe: DecimalPipe) {}
 
   ngOnInit(): void {
     // Tạo orderForm trước khi gọi service để lấy dữ liệu từ cart
@@ -90,6 +91,7 @@ export class CheckoutComponent implements OnInit {
       (response) => {
         console.log('Đơn hàng đã được tạo:', response);
         this.cartService.clearCart();
+        this.showSuccessNotification('Bạn đã thanh toán thành công');
         this.router.navigate(['/users/index']);
         // Thực hiện các hành động sau khi tạo đơn hàng thành công
       },
@@ -117,5 +119,13 @@ export class CheckoutComponent implements OnInit {
   private updateTotal(): void {
     // Tính tổng giá trị từ cart service
     this.total = this.cartService.getTotalPrice();
+  }
+  showSuccessNotification(message: string): void {
+    // Ở đây, bạn có thể sử dụng một thư viện thông báo hoặc hiển thị thông báo theo cách bạn muốn
+    // Ví dụ sử dụng Angular Material Snackbar:
+    this.snackBar.open(message, 'Đóng', {
+      duration: 2000, // Thời gian hiển thị thông báo
+      verticalPosition: 'top', // Vị trí của thông báo
+    });
   }
 }
