@@ -252,6 +252,132 @@ router.get('/ctdh/get-one/:id',function(req,res){
   })
 });
 
+router.get('/revenue/monthly', (req, res) => {
+  const currentYear = new Date().getFullYear();
+  const selectedYear = req.query.year || currentYear;
+  const selectedMonth = req.query.month || new Date().getMonth() + 1; // Lấy giá trị tháng từ tham số hoặc sử dụng tháng hiện tại nếu không có
+
+  const query = `
+    SELECT MONTH(Ngaydat) AS month, SUM(Tongtien) AS totalRevenue
+    FROM donhang
+    WHERE YEAR(Ngaydat) = ${selectedYear} AND MONTH(Ngaydat) = ${selectedMonth}
+    GROUP BY month
+  `;
+
+  db.query(query, (error, results) => {
+    if (error) {
+      console.error('Error executing query:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    } else {
+      const totalRevenue = results.length > 0 ? results[0].totalRevenue : 0;
+      res.json({ totalRevenue });
+    }
+  });
+});
+
+router.get('/revenue/yearly', (req, res) => {
+  const selectedYear = req.query.year || new Date().getFullYear(); // Lấy giá trị năm từ tham số hoặc sử dụng năm hiện tại nếu không có
+
+  const query = `
+    SELECT YEAR(Ngaydat) AS year, SUM(Tongtien) AS totalRevenue
+    FROM donhang
+    WHERE YEAR(Ngaydat) = ${selectedYear}
+    GROUP BY year
+  `;
+
+  db.query(query, (error, results) => {
+    if (error) {
+      console.error('Error executing query:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    } else {
+      const totalRevenue = results.length > 0 ? results[0].totalRevenue : 0;
+      res.json({ totalRevenue });
+    }
+  });
+});
+
+router.get('/thongke/yearly', (req, res) => {
+  const currentYear = new Date().getFullYear();
+
+  const query = `
+    SELECT YEAR(Ngaydat) AS year, SUM(Tongtien) AS totalRevenue
+    FROM donhang
+    WHERE YEAR(Ngaydat) = ${currentYear}
+    GROUP BY year
+  `;
+
+  db.query(query, (error, results) => {
+    if (error) {
+      console.error('Error executing query:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    } else {
+      const totalRevenue = results.length > 0 ? results[0].totalRevenue : 0;
+      res.json({ totalRevenue });
+    }
+  });
+});
+
+
+// API endpoint để thống kê doanh thu trong tháng
+router.get('/thongke/monthly', (req, res) => {
+  const currentDate = new Date();
+  const currentMonth = currentDate.getMonth() + 1; // Lưu ý: Tháng trong JavaScript đếm từ 0
+  const currentYear = currentDate.getFullYear();
+
+  const query = `
+    SELECT MONTH(Ngaydat) AS month, SUM(Tongtien) AS totalRevenue
+    FROM donhang
+    WHERE YEAR(Ngaydat) = ${currentYear} AND MONTH(Ngaydat) = ${currentMonth}
+    GROUP BY month
+  `;
+
+  db.query(query, (error, results) => {
+    if (error) {
+      console.error('Error executing query:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    } else {
+      const totalRevenue = results.length > 0 ? results[0].totalRevenue : 0;
+      res.json({ totalRevenue });
+    }
+  });
+});
+
+// ...
+
+
+
+router.get('/thongke', (req, res) => {
+  const today = new Date().toISOString().split('T')[0];
+  const query = `
+    SELECT SUM(Tongtien) AS totalRevenue
+    FROM donhang
+    WHERE Ngaydat >= '${today} 00:00:00' AND Ngaydat <= '${today} 23:59:59'
+  `;
+
+  db.query(query, (error, results) => {
+    if (error) {
+      console.error('Error executing query:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    } else {
+      const totalRevenue = results.length > 0 ? parseFloat(results[0].totalRevenue) : 0;
+      res.json({ totalRevenue });
+    }
+  });
+});
+
+
+router.get("/donhang/remove/:id", function(req, res) {
+  var id = req.params.id;
+  var query = "DELETE FROM donhang WHERE id = ?";
+
+  db.query(query, [id], function(err, result) {
+      if (err) {
+          console.error(err);
+          return res.status(500).send('Lỗi truy vấn');
+      }
+      res.json(result);
+  });
+});
 
 
 router.post('/api/createOrder', (req, res) => {
@@ -348,6 +474,44 @@ router.post('/api/createOrder', (req, res) => {
 });
 
 
+router.get('/revenue/statistics', (req, res) => {
+  const selectedYear = req.query.year;
+  const selectedMonth = req.query.month;
+  const selectedDay = req.query.day;
 
+  let query = `
+    SELECT`;
+
+  // Xử lý trường hợp chỉ có năm
+  if (selectedYear && !selectedMonth && !selectedDay) {
+    query += ` YEAR(Ngaydat) AS year, SUM(Tongtien) AS totalRevenue
+              FROM donhang
+              WHERE YEAR(Ngaydat) = ${selectedYear}
+              GROUP BY year`;
+
+  // Xử lý trường hợp có cả tháng và năm
+  } else if (selectedYear && selectedMonth && !selectedDay) {
+    query += ` YEAR(Ngaydat) AS year, MONTH(Ngaydat) AS month, SUM(Tongtien) AS totalRevenue
+              FROM donhang
+              WHERE YEAR(Ngaydat) = ${selectedYear} AND MONTH(Ngaydat) = ${selectedMonth}
+              GROUP BY year, month`;
+
+  // Xử lý trường hợp có cả ngày, tháng và năm
+  } else if (selectedYear && selectedMonth && selectedDay) {
+    query += ` YEAR(Ngaydat) AS year, MONTH(Ngaydat) AS month, DAY(Ngaydat) AS day, SUM(Tongtien) AS totalRevenue
+              FROM donhang
+              WHERE YEAR(Ngaydat) = ${selectedYear} AND MONTH(Ngaydat) = ${selectedMonth} AND DAY(Ngaydat) = ${selectedDay}
+              GROUP BY year, month, day`;
+  }
+
+  db.query(query, (error, results) => {
+    if (error) {
+      console.error('Error executing query:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    } else {
+      res.json(results);
+    }
+  });
+});
 
 module.exports=router;

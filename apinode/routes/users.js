@@ -1,6 +1,8 @@
 var router = require('express')();
 var db = require('./dbconnect');
-
+var jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+const secretKey = 'nghia';
 router.get('/users',(req,res)=>{
     var query = 'Select * from users'
     db.query(query,(error,result)=>{
@@ -78,4 +80,64 @@ router.get("/users/remove/:id", function(req, res) {
     });
 });
 
+
+router.post('/login', (req, res) => {
+    const { name, password } = req.body;
+  
+    if (!name || !password) {
+      return res.status(400).json({ message: 'Vui lòng nhập tên đăng nhập và mật khẩu.' });
+    }
+  
+    const query = 'SELECT * FROM users WHERE name = ?';
+    db.query(query, [name], async (error, results) => {
+      if (error) {
+        console.error('Lỗi kết nối cơ sở dữ liệu:', error);
+        return res.status(500).json({ message: 'Lỗi kết nối cơ sở dữ liệu.' });
+      }
+  
+      if (results.length === 0) {
+        return res.status(401).json({ message: 'Tên đăng nhập hoặc mật khẩu không chính xác.' });
+      }
+  
+      const user = results[0];
+      const match = await bcrypt.compare(password, user.password);
+  
+      if (match) {
+        const tokenPayload = { id: user.id, name: user.name };
+        const token = jwt.sign(tokenPayload, secretKey, { expiresIn: '1h' });
+  
+        res.json({ message: 'Đăng nhập thành công', token });
+      } else {
+        res.status(401).json({ message: 'Tên đăng nhập hoặc mật khẩu không chính xác.' });
+      }
+    });
+  });
+  
+  router.post('/register', async (req, res) => {
+    try {
+      const { name, email, password } = req.body;
+  
+     
+      const hashedPassword = await bcrypt.hash(password, 10);
+  
+      
+      const insertQuery = `
+        INSERT INTO users (name, email, password)
+        VALUES (?, ?, ?)
+      `;
+  
+      db.query(insertQuery, [name, email, hashedPassword], (error, result) => {
+        if (error) {
+          console.error('Error registering user:', error);
+          res.status(500).json({ error: 'Internal Server Error' });
+        } else {
+          // Send a success response
+          res.status(201).json({ message: 'User registered successfully!' });
+        }
+      });
+    } catch (error) {
+      console.error('Error registering user:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
 module.exports=router;

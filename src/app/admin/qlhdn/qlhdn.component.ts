@@ -16,7 +16,7 @@ import { HomeService } from '../service/home.service';
   ]
 })
 export class QlhdnComponent {
-  constructor(private api : HomeService, private router: Router) {}
+  constructor(private api : HomeService, private router: Router,private decimalPipe: DecimalPipe) {}
   
   subjects: any;
   selectedItem: any | null = null;
@@ -104,9 +104,25 @@ addNewItem(itemData: any): void {
   );
 }
 
+
+
 redirectToDetailPage(item: any): void {
   // Navigate to the detail page with the product ID
   this.router.navigate(['/admin/chitiethdn', item.id]);
+}
+
+formatCurrency(price: number | null): string {
+  if (price === null) {
+    return 'N/A'; // hoặc giá trị mặc định khác tùy thuộc vào yêu cầu của bạn
+  }
+
+  // Nhân price với 1000
+  const multipliedPrice = price * 1000;
+
+  // Định dạng giá trị nhân với 1000
+  const formattedPrice = this.decimalPipe.transform(multipliedPrice, '1.0-0');
+
+  return formattedPrice ? formattedPrice.replace(/,/g, '.') : '';
 }
 
 

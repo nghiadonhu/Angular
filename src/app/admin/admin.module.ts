@@ -33,6 +33,10 @@ import { AdddatanvComponent } from './adddatanv/adddatanv.component';
 import { QlkhComponent } from './qlkh/qlkh.component';
 import { SuakhComponent } from './suakh/suakh.component';
 import { AdddatakhComponent } from './adddatakh/adddatakh.component';
+import { ThongkeComponent } from './thongke/thongke.component';
+import { InhoadonComponent } from './inhoadon/inhoadon.component';
+import { LoginComponent } from './login/login.component';
+
 
 @NgModule({
   declarations: [
@@ -60,7 +64,11 @@ import { AdddatakhComponent } from './adddatakh/adddatakh.component';
     AdddatanvComponent,
     QlkhComponent,
     SuakhComponent,
-    AdddatakhComponent
+    AdddatakhComponent,
+    ThongkeComponent,
+    InhoadonComponent,
+    LoginComponent,
+   
    
    
   ],

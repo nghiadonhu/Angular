@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
+import { DecimalPipe } from '@angular/common';
 import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
   declarations: [
@@ -25,7 +25,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     MatSnackBarModule,
     NgxPaginationModule,
   ],
-  providers: [],
+  providers: [
+    DecimalPipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

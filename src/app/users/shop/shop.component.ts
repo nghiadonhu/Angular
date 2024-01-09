@@ -59,7 +59,7 @@ onCategoryClick(event: Event, categoryId: any) {
   // Ngăn chặn sự kiện mặc định của thẻ 'a' để không làm mất hiệu ứng collapse
   event.preventDefault();
 
-  // Bây giờ bạn có thể sử dụng giá trị categoryId
+  
   console.log('Category ID:', categoryId);
 
   // Gọi API hoặc thực hiện các công việc khác dựa trên categoryId

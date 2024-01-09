@@ -28,6 +28,11 @@ export class HomeService {
       return this.http.get<any>(url);
     }
 
+    getItemByIddh(id: any): Observable<any> {
+      const url = `http://localhost:3000/dh/get-one/${id}`;
+      return this.http.get<any>(url);
+    }
+
     getItemByIdcthdn(id: any): Observable<any> {
       const url = `http://localhost:3000/cthdn/get-one/${id}`;
       return this.http.get<any>(url);
@@ -254,6 +259,10 @@ export class HomeService {
     getItemByIdhdn(id: any): Observable<any> {
       const url = `http://localhost:3000/hoadonnhap/get-one/${id}`;
       return this.http.get<any>(url);
+    }
+
+    login(credentials: { name: string; password: string }): Observable<any> {
+      return this.http.post<any>(`http://localhost:3000/login`, credentials);
     }
 
    

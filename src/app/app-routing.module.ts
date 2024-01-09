@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './users/user.component';
+import { InhoadonComponent } from './admin/inhoadon/inhoadon.component';
+import { LoginComponent } from './admin/login/login.component';
 
 const routes: Routes = [
 
@@ -18,6 +20,19 @@ const routes: Routes = [
     loadChildren: () =>
       import('./users/user.module').then((m) => m.UserModule),
   },
+
+  {
+    path: 'hoadon/:id',
+    component: InhoadonComponent,
+   
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+   
+  },
+  
+ 
  
 
 ];

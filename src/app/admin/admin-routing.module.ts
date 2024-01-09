@@ -22,6 +22,8 @@ import { SuanvComponent } from './suanv/suanv.component';
 import { QlkhComponent } from './qlkh/qlkh.component';
 import { AdddatakhComponent } from './adddatakh/adddatakh.component';
 import { SuakhComponent } from './suakh/suakh.component';
+import { ThongkeComponent } from './thongke/thongke.component';
+
 
 const routes: Routes = [
 
@@ -128,6 +130,11 @@ const routes: Routes = [
     component:QlcthdnComponent
   },
 
+  {
+    path:'thongke',
+    component:ThongkeComponent
+  },
+ 
 ];
 
 @NgModule({

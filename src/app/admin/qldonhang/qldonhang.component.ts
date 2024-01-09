@@ -58,6 +58,11 @@ redirectToDetailPage(item: any): void {
   this.router.navigate(['/admin/chitietdh', item.id]);
 }
 
+redirectToInHoaDon(item: any): void {
+  // Navigate to the detail page with the product ID
+  this.router.navigate(['/hoadon', item.id]);
+}
+
 private refreshList(): void {
   this.api.getListdh().subscribe(list => {
     this.subjects = list;
